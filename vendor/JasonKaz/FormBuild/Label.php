@@ -27,7 +27,7 @@ class Label extends FormElement
         }
     }
     
-      /**
+    /**
      * @return string
      */
     public function render(){

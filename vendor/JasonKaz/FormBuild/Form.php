@@ -80,43 +80,48 @@ class Form extends FormElement
 			$this->Elements[] = $obj;
 		}
         
-        if ((get_class($Args[0]) === "JasonKaz\\FormBuild\\Checkbox" && $this->FormType === FormType::Horizontal) || get_class($Args[0]) !== "JasonKaz\\FormBuild\\Checkbox") {
-            $this->Code .= '<div class="form-group">';
-        }
-
-        //Add the "for" attribute for inputs if there is only 1 and it has an id
-        if ($ArgCount === 2 && $Args[1]->hasAttrib("id")) {
-            $Args[0]->setAttrib("for", $Args[1]->getAttrib("id"));
-        }
-
-        if (($ArgCount === 1) && ($this->FormType === FormType::Horizontal)) {
-        	$divClass = (get_class($Args[0]) === "JasonKaz\\FormBuild\\Submit") ? 'col-sm-12' : 'col-sm-offset-' . $this->LabelWidth . ' col-sm-' . $this->InputWidth;
-        	$this->Code .= '<div class="' . $divClass . '">';
-	        $this->Code .= $Args[0]->render();
-	        $this->Code .= '</div> ';
-        }else{
-	        for ($i = $Start; $i < $ArgCount; $i++) {
-	            if ($this->FormType == FormType::Horizontal && $i === 1 && get_class($Args[$i]) !== "JasonKaz\\FormBuild\\Checkbox") {
-	                $this->Code .= '<div class="col-sm-' . $this->InputWidth . '">';
-	            }
-	
-	            if (gettype($Args[$i]) === "string") {
-	                $this->Code .= '<p class="help-block">' . $Args[$i] . '</p>';
-	            } else {
-	                $this->Code .= $Args[$i]->render();
-	            }
-	
-	            if ($this->FormType == FormType::Horizontal && $i === $ArgCount - 1 && get_class($Args[$i]) !== "JasonKaz\\FormBuild\\Checkbox") {
-	                $this->Code .= '</div>';
-	            }
+		$lastElement = $Args[$ArgCount-1];
+		$errorMessage = $lastElement->errorMessage();
+		$errorClass = "";
+		$errorLabel = FALSE;
+		if($errorMessage !== NULL){
+			$errorClass = " has-error";
+			$errorLabel = $this->label($errorMessage);
+			if($lastElement->hasAttrib("id")) {
+	            $errorLabel->setAttrib("for", $lastElement->getAttrib("id"));
+	            $errorLabel->setAttrib("class", 'control-label');
+	        }
+		}
+		
+		$this->Code .= '<div class="form-group' . $errorClass . '">';
+        
+    	if ($ArgCount === 2){
+			// Add the "for" attribute for inputs if there is only 1 and it has an id
+        	if($Args[1]->hasAttrib("id")){
+        		$Args[0]->setAttrib("for", $Args[1]->getAttrib("id"));
         	}
+        	$this->Code .= $Args[0]->render();
+    	}
+		
+		if ($this->FormType === FormType::Horizontal) {
+			$divClass = 'col-sm-' . $this->InputWidth;
+			if ($ArgCount === 1) {
+				$divClass = (get_class($Args[0]) === "JasonKaz\\FormBuild\\Submit") ? 'col-sm-12' : 'col-sm-offset-' . $this->LabelWidth . ' col-sm-' . $this->InputWidth;
+			}
+			$this->Code .= '<div class="' . $divClass . '">';
+		}
+		
+        if($errorLabel !== FALSE){
+        	$this->Code .= $errorLabel->render();
         }
+        $this->Code .= $lastElement->render();
         
+		if ($this->FormType === FormType::Horizontal) {
+			$this->Code .= '</div> ';
+		}
+		
+        $this->Code .= '</div> ';
         
-        if ((get_class($Args[0]) === "JasonKaz\\FormBuild\\Checkbox" && $this->FormType === FormType::Horizontal) || get_class($Args[0]) !== "JasonKaz\\FormBuild\\Checkbox") {
-            $this->Code .= '</div> ';
-        }
-
         return $this;
     }
 
