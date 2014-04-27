@@ -72,10 +72,11 @@ class Form extends FormElement
             $Args[0]->setAttrib("for", $Args[1]->getAttrib("id"));
         }
 
-        if ($ArgCount === 1) {
-        	$this->Code .= '<div class="col-sm-12">';
-        	$this->Code .= $Args[0]->render();
-        	$this->Code .= '</div> ';
+        if (($ArgCount === 1) && ($this->FormType === FormType::Horizontal)) {
+        	$divClass = (get_class($Args[0]) === "JasonKaz\\FormBuild\\Submit") ? 'col-sm-12' : 'col-sm-offset-' . $this->LabelWidth . ' col-sm-' . $this->InputWidth;
+        	$this->Code .= '<div class="' . $divClass . '">';
+	        $this->Code .= $Args[0]->render();
+	        $this->Code .= '</div> ';
         }else{
 	        for ($i = $Start; $i < $ArgCount; $i++) {
 	            if ($this->FormType == FormType::Horizontal && $i === 1 && get_class($Args[$i]) !== "JasonKaz\\FormBuild\\Checkbox") {
@@ -91,8 +92,9 @@ class Form extends FormElement
 	            if ($this->FormType == FormType::Horizontal && $i === $ArgCount - 1 && get_class($Args[$i]) !== "JasonKaz\\FormBuild\\Checkbox") {
 	                $this->Code .= '</div>';
 	            }
-	        }
+        	}
         }
+        
         
         if ((get_class($Args[0]) === "JasonKaz\\FormBuild\\Checkbox" && $this->FormType === FormType::Horizontal) || get_class($Args[0]) !== "JasonKaz\\FormBuild\\Checkbox") {
             $this->Code .= '</div> ';
