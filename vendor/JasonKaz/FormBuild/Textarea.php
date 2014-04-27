@@ -6,7 +6,10 @@ namespace JasonKaz\FormBuild;
 
 class Textarea extends FormElement implements Validable
 {
-    public function __construct($Content ='', $Attribs = array(), $Validations = array())
+	
+	private $Content;
+	
+    public function __construct($Content = '', $Attribs = array(), $Validations = array())
     {
         $this->Attribs = $Attribs;
         $this->Validations = $Validations;
@@ -16,7 +19,14 @@ class Textarea extends FormElement implements Validable
     	if($value !== NULL){
     		$Content = $value;
     	}
-        
-        $this->Code = '<textara' . $this->parseAttribs($this->Attribs) . '>'.$Content.'</textarea>';
+        $this->Content = $Content;
     }
+    
+    /**
+     * @return string
+     */
+    public function render(){
+    	return '<textarea' . $this->parseAttribs($this->Attribs) . '>'.$this->Content.'</textarea>';
+    }
+    
 }

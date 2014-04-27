@@ -22,7 +22,7 @@ class InListValidation implements InputValidation{
      * @return boolean
      */
     public function isValid($inputValue){
-     	return in_array($inputValue, $validValues, false);
+     	return in_array($inputValue, $this->validValues, false);
     }
     
     /**
