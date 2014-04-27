@@ -6,10 +6,10 @@ namespace JasonKaz\FormBuild;
 
 class Select extends FormElement
 {
-    public function __construct($Options = [], $SelectedOption = null, $Attribs = [])
+    public function __construct($Options = array(), $SelectedOption = null, $Attribs = array())
     {
         $this->Attribs = $Attribs;
-        $this->setAttributeDefaults(['class' => 'form-control']);
+        $this->setAttributeDefaults(array('class' => 'form-control'));
 
         $this->Code .= '<select';
         $this->Code .= $this->parseAttribs($this->Attribs);

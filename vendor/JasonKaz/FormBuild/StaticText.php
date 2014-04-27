@@ -6,10 +6,10 @@ namespace JasonKaz\FormBuild;
 
 class StaticText extends FormElement
 {
-    public function __construct($Text, $Attribs = [])
+    public function __construct($Text, $Attribs = array())
     {
         $this->Attribs = $Attribs;
-        $this->setAttributeDefaults(['class' => 'form-control-static']);
+        $this->setAttributeDefaults(array('class' => 'form-control-static'));
 
         $this->Code = '<p' . $this->parseAttribs($this->Attribs) . '>' . $Text . '</p>';
     }

@@ -3,7 +3,7 @@ namespace JasonKaz\FormBuild;
 
 class FormElement extends FormUtils
 {
-    protected $Code = "", $Attribs = [];
+    protected $Code = "", $Attribs = array();
 
     /**
      * @return string

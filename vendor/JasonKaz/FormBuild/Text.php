@@ -3,10 +3,10 @@ namespace JasonKaz\FormBuild;
 
 class Text extends GeneralInput
 {
-    public function __construct($Attribs = [])
+    public function __construct($Attribs = array())
     {
         $this->Attribs = $Attribs;
-        $this->setAttributeDefaults(['class' => 'form-control']);
+        $this->setAttributeDefaults(array('class' => 'form-control'));
 
         parent::__construct('text', $this->Attribs);
     }

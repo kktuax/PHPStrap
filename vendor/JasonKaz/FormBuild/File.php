@@ -3,7 +3,7 @@ namespace JasonKaz\FormBuild;
 
 class File extends GeneralInput
 {
-    public function __construct($Attribs = [])
+    public function __construct($Attribs = array())
     {
         $this->Attribs = $Attribs;
 
