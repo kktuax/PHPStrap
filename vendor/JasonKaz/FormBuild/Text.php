@@ -1,18 +1,18 @@
 <?php
 namespace JasonKaz\FormBuild;
 
-class Text extends GeneralInput
+class Text extends GeneralInput  implements Validable
 {
-    public function __construct($Attribs = array())
+    public function __construct($Attribs = array(), $Validations = array())
     {
         $this->Attribs = $Attribs;
+        $this->Validations = $Validations;
         $this->setAttributeDefaults(array('class' => 'form-control'));
 
-    	if($this->hasAttrib("name")){
-        	if(isset($_POST[$this->getAttrib("name")])){
-        		$this->setAttrib('value', $_POST[$this->getAttrib("name")]);
-        	}
-        }
+        $value = $this->submitedValue();
+    	if($value !== NULL){
+    		$this->setAttrib('value', $value);
+    	}
         
         parent::__construct('text', $this->Attribs);
     }

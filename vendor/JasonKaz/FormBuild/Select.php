@@ -4,22 +4,22 @@
 namespace JasonKaz\FormBuild;
 
 
-class Select extends FormElement
+class Select extends FormElement implements Validable
 {
-    public function __construct($Options = array(), $SelectedOption = null, $Attribs = array())
+    public function __construct($Options = array(), $SelectedOption = null, $Attribs = array(), $Validations = array())
     {
         $this->Attribs = $Attribs;
+        $this->Validations = $Validations;
         $this->setAttributeDefaults(array('class' => 'form-control'));
 
         $this->Code .= '<select';
         $this->Code .= $this->parseAttribs($this->Attribs);
         $this->Code .= '>';
 
-        if($this->hasAttrib("name")){
-        	if(isset($_POST[$this->getAttrib("name")])){
-        		$SelectedOption = $_POST[$this->getAttrib("name")];
-        	}
-        }
+    	$value = $this->submitedValue();
+    	if($value !== NULL){
+    		$SelectedOption = $value;
+    	}
         
         //Convert $SelectedOption to array if necessary
         if (!is_array($SelectedOption)) {

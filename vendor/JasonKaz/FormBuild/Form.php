@@ -15,6 +15,8 @@ final class FormType
 class Form extends FormElement
 {
     private $FormType, $LabelWidth = 2, $InputWidth = 10;
+    private $Elements = array();
+    private $ErrorMessage = "Plase check the form", $SucessMessage = "Form received successfully";
 
     /**
      * @param string $Action
@@ -53,7 +55,17 @@ class Form extends FormElement
         $this->LabelWidth = $LabelWidth;
         $this->InputWidth = $InputWidth;
     }
-
+    
+	/**
+     * @param $LabelWidth
+     * @param $InputWidth
+     */
+    public function setMessages($ErrorMessage, $SucessMessage)
+    {
+        $this->ErrorMessage = $ErrorMessage;
+    	$this->SucessMessage = $SucessMessage;
+    }
+    
     /**
      * @return $this
      */
@@ -63,6 +75,11 @@ class Form extends FormElement
         $ArgCount = sizeof($Args);
         $Start    = 0;
 
+	    for ($i = $Start; $i < $ArgCount; $i++) {
+			$obj = $Args[$i];
+			$this->Elements[] = $obj;
+		}
+        
         if ((get_class($Args[0]) === "JasonKaz\\FormBuild\\Checkbox" && $this->FormType === FormType::Horizontal) || get_class($Args[0]) !== "JasonKaz\\FormBuild\\Checkbox") {
             $this->Code .= '<div class="form-group">';
         }
@@ -118,18 +135,6 @@ class Form extends FormElement
     }
 
     /**
-     * @param       $Text
-     * @param       $Inline
-     * @param array $Attribs
-     *
-     * @return Checkbox
-     */
-    public function checkbox($Text, $Inline, $Attribs = array())
-    {
-        return new Checkbox($Text, $Inline, $Attribs, $this->FormType, $this->LabelWidth);
-    }
-
-    /**
      * Defines hidden inputs within the form
      * Can accept a single array to create one input or a multidimensional array to create many inputs
      *
@@ -150,4 +155,39 @@ class Form extends FormElement
 
         return $this;
     }
+    
+    /**
+     * @return boolean|NULL
+     */
+    public function isValid(){
+    	if(!empty($_POST)){
+    		foreach($this->Elements as $el){
+    			if(!$el->isValid()){
+    				return FALSE;
+    			}
+    		}
+    		return TRUE;
+    	}
+    	return NULL;
+    }
+    
+    /**
+     * @return string
+     */
+    public function render()
+    {
+    	$messageCode = '';
+    	$validForm = $this->isValid();
+    	if($validForm !== NULL){
+    		$divClass = $validForm ? 'alert alert-success' : 'alert alert-danger';
+    		$divContent = $validForm ? $this->SucessMessage : $this->ErrorMessage;
+        	$messageCode .= '<div class="' . $divClass . '">' . $divContent . '</div> ';
+    	}
+    	if($validForm === TRUE){
+    		return $messageCode;
+    	}else{
+    		return $messageCode . $this->Code;
+    	}
+    }
+    
 }
