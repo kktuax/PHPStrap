@@ -15,6 +15,12 @@ class Select extends FormElement
         $this->Code .= $this->parseAttribs($this->Attribs);
         $this->Code .= '>';
 
+        if($this->hasAttrib("name")){
+        	if(isset($_POST[$this->getAttrib("name")])){
+        		$SelectedOption = $_POST[$this->getAttrib("name")];
+        	}
+        }
+        
         //Convert $SelectedOption to array if necessary
         if (!is_array($SelectedOption)) {
             $SelectedOption = (array)$SelectedOption;
@@ -23,7 +29,7 @@ class Select extends FormElement
         foreach ($Options as $key => $val) {
             $this->Code .= '<option value="' . $key . '"';
 
-            if (in_array($key, $SelectedOption, true)) {
+            if (in_array($key, $SelectedOption, false)) {
                 $this->Code .= ' selected';
             }
 
