@@ -23,7 +23,8 @@ class LambdaValidation implements InputValidation{
      * @return boolean
      */
     public function isValid($inputValue){
-    	return $this->validFunction($inputValue);
+    	$fun = $this->validFunction;
+    	return $fun($inputValue);
     }
     
     /**

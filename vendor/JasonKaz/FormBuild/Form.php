@@ -16,7 +16,7 @@ class Form extends FormElement
 {
     private $FormType, $LabelWidth = 2, $InputWidth = 10;
     private $Elements = array();
-    private $ErrorMessage = "Plase check the form", $SucessMessage = "Form received successfully";
+    private $ErrorMessage, $SucessMessage;
 
     /**
      * @param string $Action
@@ -24,13 +24,14 @@ class Form extends FormElement
      * @param int    $FormType
      * @param array  $Attribs
      *
-     * @return $this
      */
-    public function init($Action = "#", $Method = "POST", $FormType = FormType::Normal, $Attribs = array())
+    public function __construct($Action = "", $Method = "POST", $FormType = FormType::Normal, $ErrorMessage = "Plase check the form", $SucessMessage = "Form received successfully", $Attribs = array())
     {
         $this->Attribs = $Attribs;
+        $this->ErrorMessage = $ErrorMessage;
+        $this->SucessMessage = $SucessMessage;
         $this->Code    = '<form role="form" action="' . $Action . '" method="' . $Method . '"';
-
+		
         $this->FormType = $FormType;
 
         if ($this->FormType === FormType::Horizontal) {
@@ -42,28 +43,27 @@ class Form extends FormElement
         }
 
         $this->Code .= $this->parseAttribs($this->Attribs) . '>';
-
-        return $this;
     }
 
-    /**
-     * @param $LabelWidth
-     * @param $InputWidth
-     */
     public function setWidths($LabelWidth, $InputWidth)
     {
         $this->LabelWidth = $LabelWidth;
         $this->InputWidth = $InputWidth;
     }
     
-	/**
-     * @param $LabelWidth
-     * @param $InputWidth
-     */
-    public function setMessages($ErrorMessage, $SucessMessage)
+    public function setGlobalValidations($Validations = array())
+    {
+		$this->Validations = $Validations;
+    }
+    
+    public function setSucessMessage($SucessMessage)
+    {
+    	$this->SucessMessage = $SucessMessage;
+    }
+
+    public function setErrorMessage($ErrorMessage)
     {
         $this->ErrorMessage = $ErrorMessage;
-    	$this->SucessMessage = $SucessMessage;
     }
     
     /**
@@ -161,19 +161,50 @@ class Form extends FormElement
         return $this;
     }
     
+    private $validForm = NULL;
+    
     /**
      * @return boolean|NULL
      */
     public function isValid(){
-    	if(!empty($_POST)){
-    		foreach($this->Elements as $el){
-    			if(!$el->isValid()){
-    				return FALSE;
-    			}
-    		}
-    		return TRUE;
+    	if($this->validForm == NULL){
+    		if(!empty($_POST)){
+    			$errors = $this->globalErrors();
+	    		$this->validForm = empty($errors);
+	    		if($this->validForm){
+		    		foreach($this->Elements as $el){
+		    			if(!$el->isValid()){
+		    				$this->validForm = FALSE;
+		    				break;
+		    			}
+		    		}
+	    		}
+	    	}else{
+	    		$this->validForm = NULL;
+	    	}
+	    	
     	}
-    	return NULL;
+    	return $this->validForm;
+    }
+    
+    private function fieldErrors(){
+    	$errores = array();
+    	foreach($this->Elements as $el){
+    		if(!$el->isValid()){
+    			$errores[] = $el->errorMessage();
+    		}
+		}
+    	return $errores;
+    }
+    
+    private function globalErrors(){
+    	$errores = array();
+    	foreach($this->Validations as $val){
+			if(!$val->isValid($this)){
+				$errores[] = $val->errorMessage();
+			}
+		}
+    	return $errores;
     }
     
     /**
@@ -186,12 +217,18 @@ class Form extends FormElement
     	if($validForm !== NULL){
     		$divClass = $validForm ? 'alert alert-success' : 'alert alert-danger';
     		$divContent = $validForm ? $this->SucessMessage : $this->ErrorMessage;
-        	$messageCode .= '<div class="' . $divClass . '">' . $divContent . '</div> ';
+    		if(!$validForm){
+	    		$errors = $this->globalErrors();
+	    		if(!empty($errors)){
+	    			$divContent.= "<ul><li>" . implode("</li><li>", $errors) . "</li></ul>";
+	    		}
+    		}
+    		$messageCode .= '<div class="' . $divClass . '">' . $divContent . '</div> ';
     	}
     	if($validForm === TRUE){
     		return $messageCode;
     	}else{
-    		return $messageCode . $this->Code;
+    		return $messageCode . $this->Code . "</form>";
     	}
     }
     

@@ -35,7 +35,7 @@ class FormElement implements Validable
     	return NULL;
     }
     
-    protected function submitedValue(){
+    public function submitedValue(){
     	if($this->hasAttrib("name")){
         	if(isset($_POST[$this->getAttrib("name")])){
         		return $_POST[$this->getAttrib("name")];
