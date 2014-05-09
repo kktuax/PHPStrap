@@ -172,11 +172,18 @@ class Form extends FormElement
     			$errors = $this->globalErrors();
 	    		$this->validForm = empty($errors);
 	    		if($this->validForm){
-		    		foreach($this->Elements as $el){
+	    			$anyValue = FALSE;
+	    			foreach($this->Elements as $el){
+		    			if($el->submitedValue() !== NULL){
+		    				$anyValue = TRUE;
+		    			}
 		    			if(!$el->isValid()){
 		    				$this->validForm = FALSE;
 		    				break;
 		    			}
+		    		}
+		    		if(!$anyValue){
+		    			$this->validForm = NULL;
 		    		}
 	    		}
 	    	}else{

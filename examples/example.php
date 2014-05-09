@@ -16,19 +16,19 @@ include '../env.inc.php';
             $Form = new \JasonKaz\FormBuild\Form();
             $Form->init("#", "POST", \JasonKaz\FormBuild\FormType::Normal);
             $Form->setWidths(2, 10); //Horizontal forms only
-            $Form->hidden([
-                ['name' => 'hidden1'],
-                ['name' => 'hidden2']
-            ]);
+            $Form->hidden(array(
+                array('name' => 'hidden1'),
+                array('name' => 'hidden2')
+            ));
 
-            $Form->group($Form->label('User'), new \JasonKaz\FormBuild\Text(['id' => 'test', 'class' => 'sd']));
-            $Form->group($Form->label('Pass'), new \JasonKaz\FormBuild\Password(['id' => 'hello']));
+            $Form->group($Form->label('User'), new \JasonKaz\FormBuild\Text(array('id' => 'test', 'class' => 'sd')));
+            $Form->group($Form->label('Pass'), new \JasonKaz\FormBuild\Password(array('id' => 'hello')));
             $Form->group(
                 $Form->checkbox("Checkbox text", true),
                 $Form->checkbox("More Text", true)
             );
-            $Form->group($Form->label('Textarea'), new \JasonKaz\FormBuild\Textarea('', ['disabled' => true]));
-            $Form->group($Form->label('Select'), new \JasonKaz\FormBuild\Select(['one' => 1, 'two' => 2, 'three' => 3], 'two', ['multiple' => true]));
+            $Form->group($Form->label('Textarea'), new \JasonKaz\FormBuild\Textarea('', array('disabled' => true)));
+            $Form->group($Form->label('Select'), new \JasonKaz\FormBuild\Select(array('one' => 1, 'two' => 2, 'three' => 3), 'two', array('multiple' => true)));
             $Form->group($Form->label('Static Text'), new \JasonKaz\FormBuild\StaticText('weee'));
             $Form->group($Form->label('File'), new \JasonKaz\FormBuild\File(), "Help Text");
 
