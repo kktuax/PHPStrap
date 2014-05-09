@@ -1,5 +1,5 @@
 <?php
-namespace JasonKaz\FormBuild;
+namespace PHPStrap\Form;
 
 final class FormType
 {
@@ -106,7 +106,7 @@ class Form extends FormElement
 		if ($this->FormType === FormType::Horizontal) {
 			$divClass = 'col-sm-' . $this->InputWidth;
 			if ($ArgCount === 1) {
-				$divClass = (get_class($Args[0]) === "JasonKaz\\FormBuild\\Submit") ? 'col-sm-12' : 'col-sm-offset-' . $this->LabelWidth . ' col-sm-' . $this->InputWidth;
+				$divClass = (get_class($Args[0]) === "PHPStrap\\Form\\Submit") ? 'col-sm-12' : 'col-sm-offset-' . $this->LabelWidth . ' col-sm-' . $this->InputWidth;
 			}
 			$this->Code .= '<div class="' . $divClass . '">';
 		}

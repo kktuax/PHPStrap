@@ -1,6 +1,5 @@
 <?php
-require_once 'SplClassLoader.php';
-
-$ClassLoader=new SplClassLoader('JasonKaz\FormBuild', '/vendor');
+require_once(dirname(__FILE__) . '/SplClassLoader.php');
+$ClassLoader = new SplClassLoader('PHPStrap', dirname(__FILE__) . '/vendor');
 $ClassLoader->register();
 ?>

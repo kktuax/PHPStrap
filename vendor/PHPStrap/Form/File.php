@@ -1,5 +1,5 @@
 <?php
-namespace JasonKaz\FormBuild;
+namespace PHPStrap\Form;
 
 class File extends GeneralInput
 {

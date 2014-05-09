@@ -1,5 +1,5 @@
 <?php
-namespace JasonKaz\FormBuild;
+namespace PHPStrap\Form;
 
 /**
  * Creates a general input using the following HTML:

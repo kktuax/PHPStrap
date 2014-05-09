@@ -1,7 +1,7 @@
 <?php
 
 
-namespace JasonKaz\FormBuild;
+namespace PHPStrap\Form;
 
 
 class Select extends FormElement implements Validable

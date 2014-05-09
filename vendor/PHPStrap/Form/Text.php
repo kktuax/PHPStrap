@@ -1,5 +1,5 @@
 <?php
-namespace JasonKaz\FormBuild;
+namespace PHPStrap\Form;
 
 class Text extends GeneralInput  implements Validable
 {

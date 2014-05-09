@@ -1,7 +1,7 @@
 <?php
 
 
-namespace JasonKaz\FormBuild;
+namespace PHPStrap\Form;
 
 
 class Checkbox extends FormElement

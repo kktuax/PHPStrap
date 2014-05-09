@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonKaz\FormBuild;
+namespace PHPStrap\Form;
 
 interface Validable{
 

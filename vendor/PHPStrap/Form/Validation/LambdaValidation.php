@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonKaz\FormBuild\Validation;
+namespace PHPStrap\Form\Validation;
 
 class LambdaValidation implements InputValidation{
     
