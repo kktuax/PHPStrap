@@ -2,10 +2,8 @@
 
 namespace PHPStrap\Form\Validation;
 
-class LambdaValidation implements InputValidation{
+class LambdaValidation extends BaseValidation implements InputValidation{
     
-	private $errormessage;
-	
 	private $validFunction;
 	
 	/**
@@ -14,8 +12,8 @@ class LambdaValidation implements InputValidation{
 	 * @return void
 	 */
 	public function __construct($errormessage, $validationFunction){
-		$this->errormessage = $errormessage;
 		$this->validFunction = $validationFunction;
+		parent::__construct($errormessage);
 	}
 	
     /**
@@ -27,12 +25,5 @@ class LambdaValidation implements InputValidation{
     	return $fun($inputValue);
     }
     
-    /**
-     * @return string
-     */
-    public function errorMessage(){
-    	return $this->errormessage;
-    }
-	
 }
 ?>

@@ -2,9 +2,9 @@
 
 namespace PHPStrap\Form\Validation;
 
-class InListValidation implements InputValidation{
+class InListValidation extends BaseValidation implements InputValidation{
     
-	private $errormessage, $validValues;
+	private $validValues;
 	
 	/**
 	 * @param string $errormessage
@@ -13,8 +13,8 @@ class InListValidation implements InputValidation{
 	 */
 	public function __construct($errormessage = "Invalid value", $validValues = array())
     {
-        $this->errormessage = $errormessage;
         $this->validValues = $validValues;
+        parent::__construct($errormessage);
     }
     
     /**
@@ -25,12 +25,5 @@ class InListValidation implements InputValidation{
      	return in_array($inputValue, $this->validValues, false);
     }
     
-    /**
-     * @return string
-     */
-    public function errorMessage(){
-    	return $this->errormessage;
-    }
- 
 }
 ?>

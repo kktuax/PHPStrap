@@ -2,13 +2,11 @@
 
 namespace PHPStrap\Form\Validation;
 
-class RequiredValidation implements InputValidation{
+class RequiredValidation extends BaseValidation implements InputValidation{
     
-	private $errormessage;
-	
 	public function __construct($errormessage = "Required field")
     {
-        $this->errormessage = $errormessage;
+        parent::__construct($errormessage);
     }
     
     /**
@@ -17,13 +15,6 @@ class RequiredValidation implements InputValidation{
      */
     public function isValid($inputValue){
     	return strlen(trim($inputValue)) > 0;
-    }
-    
-    /**
-     * @return string
-     */
-    public function errorMessage(){
-    	return $this->errormessage;
     }
  
 }

@@ -2,17 +2,14 @@
 
 namespace PHPStrap\Form\Validation;
 
-class EmailValidation implements InputValidation{
-    
-	private $errormessage;
+class EmailValidation extends BaseValidation implements InputValidation{
 	
 	/**
-	 * @param string $errormessage
-	 * @param callback $validationFunction funcion with an argument (input value) that returns a boolean 
+	 * @param string $errormessage 
 	 * @return void
 	 */
 	public function __construct($errormessage){
-		$this->errormessage = $errormessage;
+		parent::__construct($errormessage);
 	}
 	
     /**
@@ -23,12 +20,5 @@ class EmailValidation implements InputValidation{
     	return filter_var($inputValue, FILTER_VALIDATE_EMAIL) !== FALSE;
     }
     
-    /**
-     * @return string
-     */
-    public function errorMessage(){
-    	return $this->errormessage;
-    }
-	
 }
 ?>
