@@ -17,6 +17,7 @@ class Form extends FormElement
     private $FormType, $LabelWidth = 2, $InputWidth = 10;
     private $Elements = array();
     private $ErrorMessage, $SucessMessage;
+    private $Action, $Method;
 
     /**
      * @param string $Action
@@ -30,19 +31,15 @@ class Form extends FormElement
         $this->Attribs = $Attribs;
         $this->ErrorMessage = $ErrorMessage;
         $this->SucessMessage = $SucessMessage;
-        $this->Code    = '<form role="form" action="' . $Action . '" method="' . $Method . '"';
-		
+        $this->Action = $Action;
+        $this->Method = $Method;
         $this->FormType = $FormType;
-
         if ($this->FormType === FormType::Horizontal) {
             $this->setAttributeDefaults(array('class' => 'form-horizontal'));
         }
-
         if ($this->FormType === FormType::Inline) {
             $this->setAttributeDefaults(array('class' => 'form-inline'));
         }
-
-        $this->Code .= $this->parseAttribs($this->Attribs) . '>';
     }
 
     public function setWidths($LabelWidth, $InputWidth)
@@ -78,6 +75,9 @@ class Form extends FormElement
 	    for ($i = $Start; $i < $ArgCount; $i++) {
 			$obj = $Args[$i];
 			$this->Elements[] = $obj;
+			if(get_class($obj) === "PHPStrap\\Form\\File"){
+				$this->setAttributeDefaults(array('enctype' => 'multipart/form-data'));	
+			}
 		}
         
 		$lastElement = $Args[$ArgCount-1];
@@ -185,10 +185,9 @@ class Form extends FormElement
 			    				break;
 			    			}
 			    		}
-			    		if(!$anyValue){
-			    			$this->validForm = NULL;
-			    		}
 		    		}
+    			}else{
+    				$this->validForm = NULL;
     			}
 	    	}else{
 	    		$this->validForm = NULL;
@@ -230,7 +229,7 @@ class Form extends FormElement
     		if(!$validForm){
 	    		$errors = $this->globalErrors();
 	    		if(!empty($errors)){
-	    			$divContent.= "<ul><li>" . implode("</li><li>", $errors) . "</li></ul>";
+	    			$divContent.= \PHPStrap\Util\Html::ul($errors);
 	    		}
     		}
     		$messageCode .= '<div class="' . $divClass . '">' . $divContent . '</div> ';
@@ -238,7 +237,10 @@ class Form extends FormElement
     	if($validForm === TRUE){
     		return $messageCode;
     	}else{
-    		return $messageCode . $this->Code . "</form>";
+    		$code = '<form role="form" action="' . $this->Action . '" method="' . $this->Method . '"';
+        	$code .= $this->parseAttribs($this->Attribs) . '>';
+    		$code .= $messageCode . $this->Code . "</form>";
+    		return $code;
     	}
     }
     

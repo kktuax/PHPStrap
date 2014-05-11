@@ -1,13 +1,9 @@
 <?php
-
-
 namespace PHPStrap\Form;
 
-
-class Select extends FormElement implements Validable
-{
-    public function __construct($Options = array(), $SelectedOption = null, $Attribs = array(), $Validations = array())
-    {
+class Select extends FormElement implements Validable{
+	
+    public function __construct($Options = array(), $SelectedOption = null, $Attribs = array(), $Validations = array()){
         $this->Attribs = $Attribs;
         $this->Validations = $Validations;
         $this->setAttributeDefaults(array('class' => 'form-control'));
@@ -37,5 +33,7 @@ class Select extends FormElement implements Validable
         }
 
         $this->Code .= '</select>';
-    }
+	}
+	
+	
 }

@@ -2,7 +2,7 @@
 
 namespace PHPStrap\Util;
 
-	class Html{
+class Html{
 	
 	/** Crea etiqueta html
 	 * @param string $tag_name nombre de la etiqueta (por ej. div)
