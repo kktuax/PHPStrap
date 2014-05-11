@@ -41,7 +41,7 @@ class Accordion{
  	/**
      * @return string
      */
-    public function render(){
+	public function __toString(){
     	return Util\Html::tag("div",
 			$this->Code, 
 			array('panel-group'), array("id" => $this->Id)

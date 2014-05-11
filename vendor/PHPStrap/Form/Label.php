@@ -30,7 +30,7 @@ class Label extends FormElement
     /**
      * @return string
      */
-    public function render(){
+    public function __toString(){
     	return '<label ' . $this->parseAttribs($this->Attribs) . '>' . $this->Text . '</label>';
     }
     

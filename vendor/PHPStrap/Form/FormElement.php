@@ -47,8 +47,7 @@ class FormElement implements Validable
     /**
      * @return string
      */
-    public function render()
-    {
+    public function __toString(){
         return $this->Code;
     }
 

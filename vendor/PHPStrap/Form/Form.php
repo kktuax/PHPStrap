@@ -100,7 +100,7 @@ class Form extends FormElement
         	if($Args[1]->hasAttrib("id")){
         		$Args[0]->setAttrib("for", $Args[1]->getAttrib("id"));
         	}
-        	$this->Code .= $Args[0]->render();
+        	$this->Code .= $Args[0];
     	}
 		
 		if ($this->FormType === FormType::Horizontal) {
@@ -112,9 +112,9 @@ class Form extends FormElement
 		}
 		
         if($errorLabel !== FALSE){
-        	$this->Code .= $errorLabel->render();
+        	$this->Code .= $errorLabel;
         }
-        $this->Code .= $lastElement->render();
+        $this->Code .= $lastElement;
         
 		if ($this->FormType === FormType::Horizontal) {
 			$this->Code .= '</div> ';
@@ -169,23 +169,27 @@ class Form extends FormElement
     public function isValid(){
     	if($this->validForm == NULL){
     		if(!empty($_POST)){
-    			$errors = $this->globalErrors();
-	    		$this->validForm = empty($errors);
-	    		if($this->validForm){
-	    			$anyValue = FALSE;
-	    			foreach($this->Elements as $el){
-		    			if($el->submitedValue() !== NULL){
-		    				$anyValue = TRUE;
-		    			}
-		    			if(!$el->isValid()){
-		    				$this->validForm = FALSE;
-		    				break;
-		    			}
+    			$anyValue = FALSE;
+    			foreach($this->Elements as $el){
+		    		if($el->submitedValue() !== NULL){
+		    			$anyValue = TRUE;
 		    		}
-		    		if(!$anyValue){
-		    			$this->validForm = NULL;
+    			}
+    			if($anyValue){
+	    			$errors = $this->globalErrors();
+		    		$this->validForm = empty($errors);
+		    		if($this->validForm){
+		    			foreach($this->Elements as $el){
+			    			if(!$el->isValid()){
+			    				$this->validForm = FALSE;
+			    				break;
+			    			}
+			    		}
+			    		if(!$anyValue){
+			    			$this->validForm = NULL;
+			    		}
 		    		}
-	    		}
+    			}
 	    	}else{
 	    		$this->validForm = NULL;
 	    	}
@@ -217,8 +221,7 @@ class Form extends FormElement
     /**
      * @return string
      */
-    public function render()
-    {
+    public function __toString(){
     	$messageCode = '';
     	$validForm = $this->isValid();
     	if($validForm !== NULL){

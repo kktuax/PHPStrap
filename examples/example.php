@@ -31,7 +31,7 @@ include '../env.inc.php';
             $Form->group($Form->label('Static Text'), new \PHPStrap\Form\StaticText('weee'));
             $Form->group($Form->label('File'), new \PHPStrap\Form\File(), "Help Text");
 
-            echo $Form->render();
+            echo $Form;
             ?>
         </div>
     </div>
