@@ -9,6 +9,14 @@ class ListGroup{
 		$this->items[] = Util\Html::tag("li", $Content, array('list-group-item'));
 	}
 	
+	public function addParagraphWithHeader($Header = "", $Text = "", $Href = "#", $Active = FALSE){
+		$this->addLink(
+			Util\Html::tag("h4", $Header, array('list-group-item-heading')) .
+			Util\Html::tag("p", $Text, array('list-group-item-text')), 
+			$Href, $Active
+		);
+	}
+	
 	public function addLink($Content = "", $Href = "#", $Active = FALSE){
 		$styles = array('list-group-item');
 		if($Active){
