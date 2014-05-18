@@ -14,6 +14,10 @@ class Dropdown{
 		$this->Items[] = Util\Html::tag("li", $Content);
 	}
 	
+	public function addHeader($Content = ""){
+		$this->Items[] = Util\Html::tag("li", $Content, array('dropdown-header'));
+	}
+	
 	public function addDivider(){
 		$this->Items[] = Util\Html::tag("li", '', array('divider'));
 	}
