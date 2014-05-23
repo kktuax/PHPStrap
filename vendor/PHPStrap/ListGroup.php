@@ -5,8 +5,16 @@ class ListGroup{
 	
 	private $items = array();
 	
-	public function addItem($Content = ""){
-		$this->items[] = Util\Html::tag("li", $Content, array('list-group-item'));
+	public function addItem($Content = "", $Active = FALSE){
+		$this->items[] = Util\Html::tag("li", $Content, $this->styles($Active));
+	}
+	
+	private static function styles($Active){
+		$styles = array('list-group-item');
+		if($Active){
+			$styles[] = 'active';
+		}
+		return $styles;
 	}
 	
 	public function addParagraphWithHeader($Header = "", $Text = "", $Href = "#", $Active = FALSE){
@@ -18,11 +26,7 @@ class ListGroup{
 	}
 	
 	public function addLink($Content = "", $Href = "#", $Active = FALSE){
-		$styles = array('list-group-item');
-		if($Active){
-			$styles[] = 'active';
-		}
-		$this->items[] = Util\Html::tag("a", $Content, $styles, array("href" => $Href));
+		$this->items[] = Util\Html::tag("a", $Content, $this->styles($Active), array("href" => $Href));
 	}
 	
 	/**
