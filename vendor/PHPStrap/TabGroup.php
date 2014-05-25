@@ -12,15 +12,16 @@ class TabGroup{
 	}
 	
 	public function addTab($Id, $Title, $Content, $Active = FALSE){
-		$this->Tabs[] = new Tab($Title, $Content, $this->Id . "-" . $Id);
+		$tab = new Tab($Title, $Content, $this->Id . "-" . $Id);
+		$this->Tabs[] = $tab;
 		if($Active){
-			$this->Active = $Id;
+			$this->Active = $tab;
 		}
 	}
 	
 	private function setDefaultActive(){
-		if((!empty($Tabs)) AND ($this->Active == NULL)){
- 			$this->Active = $this->Tabs[0]->getId();
+		if((!empty($this->Tabs)) AND ($this->Active == NULL)){
+ 			$this->Active = $this->Tabs[0];
  		}
 	}
 	
