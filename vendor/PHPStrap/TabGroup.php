@@ -30,8 +30,8 @@ class TabGroup{
  		$lis = array();
  		$panes = array();
  		foreach($this->Tabs as $Id => $Tab){
- 			$lis[] = $Tab->li($this->Active == $Id);
- 			$panes[] = $Tab->pane($this->Active == $Id);
+ 			$lis[] = $Tab->li($this->Active == $Tab);
+ 			$panes[] = $Tab->pane($this->Active == $Tab);
  		}
  		$html = Util\Html::tag("ul",
 			implode($lis), 
