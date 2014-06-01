@@ -16,7 +16,7 @@ class Html{
 		foreach ($attributes as $key => $val) {
 			$attributes_str .= ' ' . $key . '="' . $val . '"';
 		}
-		return '<' . $tag_name . Html::tag_class($styles) . $attributes_str . '>' . $content . '</' . $tag_name . '>';
+		return '<' . $tag_name . Html::tag_class($styles) . $attributes_str . '>' . $content . '</' . $tag_name . '>' . "\n";
 	}
 
 	/** 
