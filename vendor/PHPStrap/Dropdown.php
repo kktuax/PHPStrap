@@ -6,8 +6,11 @@ class Dropdown{
 	
 	private $Text, $Items = array();
 	
-	public function __construct($Text){
+	private $Active;
+	
+	public function __construct($Text, $Active = FALSE){
 		$this->Text = $Text;
+		$this->Active = $Active;
 	}
 	
 	public function addItem($Content = ""){
@@ -25,7 +28,9 @@ class Dropdown{
  	public function __toString(){
         return Util\Html::tag("li", 
         	$this->header() . Util\Html::tag("ul", implode($this->Items), array('dropdown-menu')), 
-        	array('dropdown')
+        	$this->Active ? 
+        		array('dropdown', 'active') : 
+        		array('dropdown')
         );
     }
     
