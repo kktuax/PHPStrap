@@ -6,6 +6,11 @@ class Row{
 	const TOTAL_WIDTH = 12;
 	
 	private $columns = array();
+	private $types;
+	
+	public function __construct($types = array('md')){
+		$this->types = $types;
+	}
 	
 	public function addColumn($Content = "", $Width = NULL){
 		$this->columns[] = new Column($Content, $Width);
@@ -23,9 +28,12 @@ class Row{
     			$width = Row::TOTAL_WIDTH - $columns_width;
     		}
     		$columns_width += $width;
+    		$cstyles = array_map(function($type) use ($width){
+	 			return 'col-'.$type.'-' . $width;
+	 		}, $this->types);
     		$columns_html .= Util\Html::tag("div",
 		 		$column->getContent(),
-		 		array('col-md-' . $width)
+		 		$cstyles
 			);
     	}
 		return Util\Html::tag("div", $columns_html, array('row'));	
