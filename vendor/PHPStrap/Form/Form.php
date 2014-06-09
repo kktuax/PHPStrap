@@ -63,6 +63,13 @@ class Form extends FormElement
         $this->ErrorMessage = $ErrorMessage;
     }
     
+    public function addFieldWithLabel($Field, $LabelText, $HelpText = ""){
+    	if(!empty($HelpText)){
+    		$Field->withHelpText($HelpText);
+    	}
+    	$this->group($this->label($LabelText), $Field);
+    }
+    
     /**
      * @return $this
      */
