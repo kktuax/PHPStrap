@@ -38,7 +38,7 @@ class FormElement implements Validable
     public function submitedValue(){
     	if($this->hasAttrib("name")){
         	if(isset($_POST[$this->getAttrib("name")])){
-        		return $_POST[$this->getAttrib("name")];
+        		return trim($_POST[$this->getAttrib("name")]);
         	}
     	}
     	return NULL;
