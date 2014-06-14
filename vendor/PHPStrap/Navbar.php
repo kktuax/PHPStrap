@@ -40,8 +40,12 @@ class Navbar{
 		$this->ItemsRight[] = $this->createItem($Content, $Href, $Active);
 	}
 	
-	public function addRightContent($Content){
-		$this->ItemsRight[] = $Content;
+	public function addRightDropdown($Dropdown, $Active = FALSE){
+		$this->ItemsRight[] = Util\Html::tag("li", $Dropdown, 
+			$Active ? 
+        		array('dropdown', 'active') : 
+        		array('dropdown')
+        );
 	}
 	
 	private function createItem($Content, $Href, $Active){
