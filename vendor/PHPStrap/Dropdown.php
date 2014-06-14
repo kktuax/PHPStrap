@@ -4,12 +4,17 @@ namespace PHPStrap;
 
 class Dropdown{
 	
-	private $Text, $Items = array();
-	
+	private $Header, $Items = array();
+	private $Type;
 	private $Active;
 	
-	public function __construct($Text, $Active = FALSE){
-		$this->Text = $Text;
+	public function __construct($Text, $Active = FALSE, $Type = "link"){
+		if($Type == "link"){
+			$this->Header = $this->linkHeader($Text);
+		}else if($Type == "button"){
+			$this->Header = $this->buttonHeader($Text);
+		}
+		$this->Type = $Type;
 		$this->Active = $Active;
 	}
 	
@@ -26,21 +31,29 @@ class Dropdown{
 	}
 	
  	public function __toString(){
-        return Util\Html::tag("li", 
-        	$this->header() . Util\Html::tag("ul", implode($this->Items), array('dropdown-menu')), 
-        	$this->Active ? 
-        		array('dropdown', 'active') : 
-        		array('dropdown')
-        );
+ 		$html = $this->Header . Util\Html::tag("ul", implode($this->Items), array('dropdown-menu'));
+ 		if($this->Type == 'button'){
+ 			return Util\Html::tag("div", $html, array('dropdown'));
+ 		}else{
+ 			return $html;
+ 		}
     }
     
-    private function header(){
+    private function linkHeader($Text){
     	return Util\Html::tag("a", 
-    		$this->Text . ' ' . Util\Html::tag("b", '', array('caret')),
+    		$Text . ' ' . Util\Html::tag("b", '', array('caret')),
     		array('dropdown-toggle'), array('href' => '#', 'data-toggle' => 'dropdown')
     	);
     }
-	
+
+	private function buttonHeader($Text){
+		return Util\Html::tag("button", 
+			$Text . ' ' . Util\Html::tag("span", '', array('caret')), 
+			array('btn', 'btn-default', 'dropdown-toggle'), 
+			array('data-toggle' => 'dropdown')
+		);
+    }
+       
 }
 
 ?>
