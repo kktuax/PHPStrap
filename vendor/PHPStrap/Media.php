@@ -30,7 +30,7 @@ class Media{
     }
     
     private function imageLink(){
-    	return Util\Html::tag("a", $this->Img, array('pull-left'), array('href' => $this->imgHref));
+    	return Util\Html::tag("a", $this->Img, array('pull-left'), array('href' => $this->ImgHref));
     }
     
 	public static function image($src, $alt = '', $extraStyles = array()){
