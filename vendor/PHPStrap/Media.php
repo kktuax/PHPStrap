@@ -44,6 +44,10 @@ class Media{
 		);
 	}
        
+	public static function mediaList($Medias){
+		return Util\Html::tag("ul", implode($Medias), array('media-list'));
+	}
+	
 }
 
 ?>
