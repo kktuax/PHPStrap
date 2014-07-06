@@ -20,7 +20,7 @@ class Accordion{
 		}
 		$panelTitle = Util\Html::tag("div",
 			Util\Html::tag("h4", 
-				Util\Html::tag("a", $Title, array(), array('data-toggle' => 'collapse', 'data-parent' => '#' . $this->Id, 'href' => '#collapse' . $this->numberOfPanels)),
+				Util\Html::tag("a", $Title, array(), array('data-toggle' => 'collapse', 'data-parent' => '#' . $this->Id, 'href' => '#collapse-' . $this->Id . "-" . $this->numberOfPanels)),
 				array('panel-title')), 	
 			array('panel-heading')
 		);
@@ -29,7 +29,7 @@ class Accordion{
 				$Content,
 				array('panel-body')
 			), $panelClasses, 
-			array('id' => 'collapse' . $this->numberOfPanels)
+			array('id' => 'collapse-' . $this->Id . "-" . $this->numberOfPanels)
 		);
 		$this->Code .= Util\Html::tag("div", 
 			$panelTitle . $panelContent, 
