@@ -49,5 +49,11 @@ class Pager{
     	return $pager;
     }
     
+	public static function nextPager($Content = "", $Href = "#", $Disabled = FALSE){
+    	$pager = new Pager();
+    	$pager->addNextItem($Content, $Href, $Disabled);
+    	return $pager;
+    }
+    
 }
 ?>

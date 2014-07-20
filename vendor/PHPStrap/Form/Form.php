@@ -26,8 +26,7 @@ class Form extends FormElement
      * @param array  $Attribs
      *
      */
-    public function __construct($Action = "", $Method = "POST", $FormType = FormType::Normal, $ErrorMessage = "Plase check the form", $SucessMessage = "Form received successfully", $Attribs = array())
-    {
+    public function __construct($Action = "", $Method = "POST", $FormType = FormType::Normal, $ErrorMessage = "Plase check the form", $SucessMessage = "Form received successfully", $Attribs = array()){
         $this->Attribs = $Attribs;
         $this->ErrorMessage = $ErrorMessage;
         $this->SucessMessage = $SucessMessage;
@@ -42,39 +41,46 @@ class Form extends FormElement
         }
     }
 
-    public function setWidths($LabelWidth, $InputWidth)
-    {
+    public function setId($id){
+    	$this->setAttrib('id', $id);
+    }
+    
+    public function setWidths($LabelWidth, $InputWidth){
         $this->LabelWidth = $LabelWidth;
         $this->InputWidth = $InputWidth;
     }
     
-    public function setGlobalValidations($Validations = array())
-    {
+    public function setGlobalValidations($Validations = array()){
 		$this->Validations = $Validations;
     }
     
-    public function setSucessMessage($SucessMessage)
-    {
+    public function setSucessMessage($SucessMessage){
     	$this->SucessMessage = $SucessMessage;
     }
 
-    public function setErrorMessage($ErrorMessage)
-    {
+    public function setErrorMessage($ErrorMessage){
         $this->ErrorMessage = $ErrorMessage;
     }
     
     public function addFieldWithLabel($Field, $LabelText, $HelpText = ""){
     	if(!empty($HelpText)){
-    		$Field->withHelpText($HelpText);
+    		try{
+    			$Field->withHelpText($HelpText);
+    		}catch( Exception $e ){
+    			error_log("Help text cant be asigned to field of type " . get_class($Field));
+    		}
     	}
     	$this->group($this->label($LabelText), $Field);
+    }
+    
+    public function addSubmitButton($submitText = "Submit", $Attribs = array()){
+    	$this->group(new Submit($submitText, $Attribs));
     }
     
     /**
      * @return $this
      */
-    public function group()
-    {
+    public function group(){
         $Args     = func_get_args();
         $ArgCount = sizeof($Args);
         $Start    = 0;
@@ -141,8 +147,7 @@ class Form extends FormElement
      *
      * @return Label
      */
-    public function label($Text, $Attribs = array(), $ScreenReaderOnly = false)
-    {
+    public function label($Text, $Attribs = array(), $ScreenReaderOnly = false){
         return new Label($Text, $Attribs, $ScreenReaderOnly, $this->FormType, $this->LabelWidth);
     }
 
@@ -154,8 +159,7 @@ class Form extends FormElement
      *
      * @return Form
      */
-    public function hidden($Inputs = array())
-    {
+    public function hidden($Inputs = array()){
         foreach ($Inputs as $i) {
             if (is_array($i)) {
                 $this->Code .= '<input type="hidden"' . $this->parseAttribs($i) . ' />';
@@ -169,6 +173,17 @@ class Form extends FormElement
     }
     
     private $validForm = NULL;
+    
+    public function submitedValues(){
+    	$values = array();
+    	foreach($this->Elements as $el){
+    		$val = $el->submitedValue();
+    		if($val !== NULL){
+    			$values[$el->getAttrib("name")] = $val;
+    		}
+    	}
+    	return $values;
+    }
     
     /**
      * @return boolean|NULL

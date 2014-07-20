@@ -3,37 +3,73 @@ namespace PHPStrap\Form;
 
 class Select extends FormElement implements Validable{
 	
-    public function __construct($Options = array(), $SelectedOption = null, $Attribs = array(), $Validations = array()){
+	private $Options;
+	private $SelectedOption;
+	
+    public function __construct($Options = array(), $SelectedOption = NULL, $Attribs = array(), $Validations = array()){
         $this->Attribs = $Attribs;
         $this->Validations = $Validations;
         $this->setAttributeDefaults(array('class' => 'form-control'));
-
-        $this->Code .= '<select';
-        $this->Code .= $this->parseAttribs($this->Attribs);
-        $this->Code .= '>';
+        $this->Options = $Options;
+        $this->SelectedOption = $SelectedOption;       
+	}
+	
+	/**
+	 * @param String $name of the input form element
+	 * @param array $Options array (keys will act as data and values will be displayed) 
+	 * @param String $SelectedOption
+	 * @return unknown_type
+	 */
+	public static function withNameAndOptions($name, $Options, $SelectedOption = NULL){
+		return new Select(
+			$Options, $SelectedOption, 
+			array('name' => $name), 
+			array(new Validation\InListValidation("Required field", array_keys($Options)))
+		);
+	}
+	
+	/**
+	 * @param String $name of the input form element
+	 * @param array $Options vector array (keys and values are the same) 
+	 * @param String $SelectedOption
+	 * @return unknown_type
+	 */
+	public static function withNameAndSimpleOptions($name, $Options, $SelectedOption = NULL){
+		return new Select(
+			array_combine($Options, $Options), $SelectedOption, 
+			array('name' => $name), 
+			array(new Validation\InListValidation("Required field", $Options))
+		);
+	}
+	
+	/**
+     * @return string
+     */
+    public function __toString(){
+    	$code = '<select';
+        $code .= $this->parseAttribs($this->Attribs);
+        $code .= '>';
 
     	$value = $this->submitedValue();
     	if($value !== NULL){
-    		$SelectedOption = $value;
+    		$this->SelectedOption = $value;
     	}
         
         //Convert $SelectedOption to array if necessary
-        if (!is_array($SelectedOption)) {
-            $SelectedOption = (array)$SelectedOption;
+        if (!is_array($this->SelectedOption)) {
+            $this->SelectedOption = (array)$this->SelectedOption;
         }
 
-        foreach ($Options as $key => $val) {
-            $this->Code .= '<option value="' . $key . '"';
-
-            if (in_array($key, $SelectedOption, false)) {
-                $this->Code .= ' selected';
+        foreach ($this->Options as $key => $val) {
+            $code .= '<option value="' . $key . '"';
+            if (in_array($key, $this->SelectedOption, false)) {
+                $code .= ' selected="selected"';
             }
-
-            $this->Code .= '>' . $val . '</option>';
+            $code .= '>' . $val . '</option>';
         }
 
-        $this->Code .= '</select>';
-	}
-	
+        $code .= '</select>';
+        return $code;
+    }
 	
 }
