@@ -94,16 +94,11 @@ class Form extends FormElement
 		if(!empty($errorLabel)){
 			$styles[] = "has-error";
 		}
-		$content = $Label;
+		$content = $errorLabel . $FormElement;
 		if($this->FormType === FormType::Horizontal){
-			$content .= \PHPStrap\Util\Html::tag("div", 
-				$errorLabel . $FormElement, 
-				$this->horizontalStyles($FormElement, $Label)
-			);
-		}else{
-			$content .= $errorLabel . $FormElement;
+			$content = \PHPStrap\Util\Html::tag("div", $content, $this->horizontalStyles($FormElement, $Label));
 		}
-		$this->Code .= \PHPStrap\Util\Html::tag("div", $content, $styles);
+		$this->Code .= \PHPStrap\Util\Html::tag("div", $Label . $content, $styles);
 		return $this;
     }
 
