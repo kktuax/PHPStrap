@@ -66,88 +66,77 @@ class Form extends FormElement
     	if(!empty($HelpText)){
     		try{
     			$Field->withHelpText($HelpText);
-    		}catch( Exception $e ){
+    		}catch(Exception $e){
     			error_log("Help text cant be asigned to field of type " . get_class($Field));
     		}
     	}
-    	$this->group($this->label($LabelText), $Field);
+    	$Label = $this->label($LabelText);
+    	if($this->FormType !== FormType::Horizontal) {
+    		$Label->setAttrib("class", 'control-label');
+    	}
+    	if($Field->hasAttrib("id")){
+        	$Label->setAttrib("for", $Field->getAttrib("id"));
+        }
+    	$this->group($Field, $Label);
     }
     
     public function addSubmitButton($submitText = "Submit", $Attribs = array()){
     	$this->group(new Submit($submitText, $Attribs));
     }
-    
+     
     /**
      * @return $this
      */
-    public function group(){
-        $Args     = func_get_args();
-        $ArgCount = sizeof($Args);
-        $Start    = 0;
-
-	    for ($i = $Start; $i < $ArgCount; $i++) {
-			$obj = $Args[$i];
-			$this->Elements[] = $obj;
-			if(get_class($obj) === "PHPStrap\\Form\\File"){
-				$this->setAttributeDefaults(array('enctype' => 'multipart/form-data'));	
-			}
+    public function group($FormElement, $Label = ''){
+		$this->addFormElement($FormElement);
+        $errorLabel = $this->errorLabel($FormElement);
+		$styles = array('form-group');
+		if(!empty($errorLabel)){
+			$styles[] = "has-error";
 		}
-        
-		$lastElement = $Args[$ArgCount-1];
-		$errorMessage = $lastElement->errorMessage();
-		$errorClass = "";
-		$errorLabel = FALSE;
-		if($errorMessage !== NULL){
-			$errorClass = " has-error";
-			$errorLabel = $this->label($errorMessage);
-			if($lastElement->hasAttrib("id")) {
-	            $errorLabel->setAttrib("for", $lastElement->getAttrib("id"));
-	            $errorLabel->setAttrib("class", 'control-label');
-	        }
+		$content = $Label;
+		if($this->FormType === FormType::Horizontal){
+			$content .= \PHPStrap\Util\Html::tag("div", 
+				$errorLabel . $FormElement, 
+				$this->horizontalStyles($FormElement, $Label)
+			);
+		}else{
+			$content .= $errorLabel . $FormElement;
 		}
-		
-		$this->Code .= '<div class="form-group' . $errorClass . '">';
-        
-    	if ($ArgCount === 2){
-			// Add the "for" attribute for inputs if there is only 1 and it has an id
-        	if($Args[1]->hasAttrib("id")){
-        		$Args[0]->setAttrib("for", $Args[1]->getAttrib("id"));
-        	}
-        	$this->Code .= $Args[0];
-    	}
-		
-		if ($this->FormType === FormType::Horizontal) {
-			$divClass = 'col-sm-' . $this->InputWidth;
-			if ($ArgCount === 1) {
-				$divClass = (get_class($Args[0]) === "PHPStrap\\Form\\Submit") ? 'col-sm-12' : 'col-sm-offset-' . $this->LabelWidth . ' col-sm-' . $this->InputWidth;
-			}
-			$this->Code .= '<div class="' . $divClass . '">';
-		}
-		
-        if($errorLabel !== FALSE){
-        	$this->Code .= $errorLabel;
-        }
-        $this->Code .= $lastElement;
-        
-		if ($this->FormType === FormType::Horizontal) {
-			$this->Code .= '</div> ';
-		}
-		
-        $this->Code .= '</div> ';
-        
-        return $this;
+		$this->Code .= \PHPStrap\Util\Html::tag("div", $content, $styles);
+		return $this;
     }
 
-    /**
-     * Generates the HTML required for a label
-     *
-     * @param string $Text
-     * @param array  $Attribs
-     * @param bool   $ScreenReaderOnly
-     *
-     * @return Label
-     */
-    public function label($Text, $Attribs = array(), $ScreenReaderOnly = false){
+ 	private function addFormElement($obj){
+		$this->Elements[] = $obj;
+		if(get_class($obj) === "PHPStrap\\Form\\File"){
+			$this->setAttributeDefaults(array('enctype' => 'multipart/form-data'));	
+		}
+    }
+    
+    private function errorLabel($FormElement){
+    	$errorLabel = '';
+    	$errorMessage = $FormElement->errorMessage();
+		if($errorMessage !== NULL){
+			$errorLabel = $this->label($errorMessage, array('class' => 'control-label'));
+			if($FormElement->hasAttrib("id")) {
+	            $errorLabel->setAttrib("for", $FormElement->getAttrib("id"));
+	        }
+		}
+		return $errorLabel;
+    }
+    
+	private function horizontalStyles($FormElement, $Label){
+    	if(empty($Label)) {
+    		return (get_class($FormElement) === "PHPStrap\\Form\\Submit") ? 
+    			array('col-sm-12') :
+    			array('col-sm-offset-' . $this->LabelWidth, ' col-sm-' . $this->InputWidth);
+		}else{
+			return array('col-sm-' . $this->InputWidth);			
+		}
+    }
+    
+    private function label($Text, $Attribs = array(), $ScreenReaderOnly = false){
         return new Label($Text, $Attribs, $ScreenReaderOnly, $this->FormType, $this->LabelWidth);
     }
 

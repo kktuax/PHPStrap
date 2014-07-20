@@ -58,13 +58,10 @@ class FormElement implements Validable
      */
     protected function setAttributeDefaults($DefaultAttribs){
         foreach($DefaultAttribs as $k=>$v){
-            if (!array_key_exists($k, $this->Attribs)){
-                $this->Attribs[$k]=$v;
-            }else{
-                $this->Attribs[$k].=' '.$v;
-            }
+        	if(!$this->hasAttrib($k)){
+        		$this->setAttrib($k, $v);
+        	}
         }
-
         return $this->Attribs;
     }
 
@@ -73,8 +70,7 @@ class FormElement implements Validable
      *
      * @return bool
      */
-    protected function hasAttrib($Attrib)
-    {
+    protected function hasAttrib($Attrib){
         return isset($this->Attribs[$Attrib]) && $this->Attribs[$Attrib] != "";
     }
 
@@ -83,8 +79,7 @@ class FormElement implements Validable
      *
      * @return mixed
      */
-    protected function getAttrib($Attrib)
-    {
+    protected function getAttrib($Attrib){
         return $this->Attribs[$Attrib];
     }
 
@@ -92,8 +87,7 @@ class FormElement implements Validable
      * @param $Attrib
      * @param $Value
      */
-    protected function setAttrib($Attrib, $Value)
-    {
+    protected function setAttrib($Attrib, $Value){
         $this->Attribs[$Attrib] = $Value;
     }
 
@@ -101,13 +95,11 @@ class FormElement implements Validable
      * @param $Attrib
      * @param $Value
      */
-    protected function addAttrib($Attrib, $Value)
-    {
+    protected function addAttrib($Attrib, $Value){
         $this->Attribs[$Attrib] .= " " . $Value;
     }
     
-    protected function parseAttribs($Attribs = array())
-    {
+    protected function parseAttribs($Attribs = array()){
         $Str = "";
 
         $Properties = array('disabled', 'readonly', 'multiple', 'checked', 'required', 'autofocus');
