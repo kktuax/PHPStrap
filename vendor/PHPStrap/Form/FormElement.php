@@ -70,7 +70,7 @@ class FormElement implements Validable
      *
      * @return bool
      */
-    protected function hasAttrib($Attrib){
+    public function hasAttrib($Attrib){
         return isset($this->Attribs[$Attrib]) && $this->Attribs[$Attrib] != "";
     }
 
@@ -79,7 +79,7 @@ class FormElement implements Validable
      *
      * @return mixed
      */
-    protected function getAttrib($Attrib){
+    public function getAttrib($Attrib){
         return $this->Attribs[$Attrib];
     }
 

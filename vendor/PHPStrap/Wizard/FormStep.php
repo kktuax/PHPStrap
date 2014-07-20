@@ -26,7 +26,7 @@ class FormStep implements Step{
 		$response = $this->Form->submitedValues();
 		if(!empty($this->finishFunction)){
 			$fun = $this->finishFunction;
-			$fun($response);
+			$fun($this->Form);
 		}
 		return $response;
 	}
