@@ -10,13 +10,23 @@ class Wizard{
 		$this->steps = $steps;
 		$this->nextCaption = $nextCaption;
 		$this->initSteps();
-		$this->processSteps();
+		$this->addNavigation();
 	}
 	
 	private function activeStep(){
-		$lastStep = $this->lastStep();
-		if(!empty($lastStep)){
-			$nextPost = 1 + array_search($lastStep, $this->steps);
+		$lastFinishedStep = NULL;
+		foreach($this->steps as $Step){
+			$canFinish = $Step->canFinish();
+			if($canFinish !== NULL){
+				if($canFinish === FALSE){
+					return $Step;
+				}else{
+					$lastFinishedStep = $Step;
+				}
+			}
+		}
+		if(!empty($lastFinishedStep)){
+			$nextPost = 1 + array_search($lastFinishedStep, $this->steps);
 			if($nextPost == count($this->steps)){
 				return $this->finalStep();
 			}else{
@@ -31,26 +41,12 @@ class Wizard{
 		return $this->steps[count($this->steps)-1];
 	}
 	
-	private function lastStep(){
-		foreach($this->steps as $Step){
-			if($Step->isValid()){
-				return $Step;
-			}
-		}
-		return NULL;
-	}
-	
 	private function progress(){
 		$activeStep = $this->activeStep();
-		$lastStep = $this->lastStep();
-		if(!empty($lastStep)){
-			if($activeStep != $lastStep){
-				return round(100 * array_search($activeStep, $this->steps) / count($this->steps));
-			}else{
-				return 100;
-			}
+		if(($activeStep == $this->finalStep()) && ($activeStep->canFinish() === TRUE)){
+			return 100;
 		}else{
-			return 0;
+			return round(100 * array_search($activeStep, $this->steps) / count($this->steps));
 		}
 	}
 	
@@ -58,15 +54,14 @@ class Wizard{
 		$data = array();
 		foreach($this->steps as $Step){
 			$Step->initialize($data);
-			if($Step->isValid()){
+			if($Step->canFinish()){
 				$data = array_merge($data, $Step->finish());
 			}
 		}
 	}
 	
-	private function processSteps(){
+	private function addNavigation(){
 		$activeStep = $this->activeStep();
-		$lastStep = $this->lastStep();
 		if($activeStep != $this->finalStep()){
 			$activeStep->addNextButton($this->nextCaption);
 		}

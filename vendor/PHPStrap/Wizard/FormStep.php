@@ -31,9 +31,14 @@ class FormStep implements Step{
 		return $response;
 	}
 	
-	public function isValid(){
-		if(empty($this->Form)) return FALSE;
-		return (!empty($_POST)) && $this->Form->isValid();
+	public function canFinish(){
+		if(empty($_POST)){
+			return NULL;
+		}else if(empty($this->Form->submitedValues())){
+			return NULL;
+		}else{
+			return $this->Form->isValid();
+		}
 	}
 	
 	public function addNextButton($nextCaption){

@@ -83,22 +83,26 @@ class Form extends FormElement
     public function addSubmitButton($submitText = "Submit", $Attribs = array()){
     	$this->group(new Submit($submitText, $Attribs));
     }
-     
+
+    /**
+     * @return $this
+     */
+    public function groupRow($FormElements, $Styles){
+    	$groups = array();
+    	for($i=0;$i<count($FormElements);$i++){
+    		$this->addFormElement($FormElements[$i]);
+    		$groups[] = $this->formGroup($FormElements[$i], '', $Styles[$i]);
+    	}
+    	$this->Code .= \PHPStrap\Util\Html::tag("div", implode($groups), array('row'));
+    	return $this;
+    }
+    
     /**
      * @return $this
      */
     public function group($FormElement, $Label = ''){
 		$this->addFormElement($FormElement);
-        $errorLabel = $this->errorLabel($FormElement);
-		$styles = array('form-group');
-		if(!empty($errorLabel)){
-			$styles[] = "has-error";
-		}
-		$content = $errorLabel . $FormElement;
-		if($this->FormType === FormType::Horizontal){
-			$content = \PHPStrap\Util\Html::tag("div", $content, $this->horizontalStyles($FormElement, $Label));
-		}
-		$this->Code .= \PHPStrap\Util\Html::tag("div", $Label . $content, $styles);
+        $this->Code .= $this->formGroup($FormElement, $Label);
 		return $this;
     }
 
@@ -107,6 +111,19 @@ class Form extends FormElement
 		if(get_class($obj) === "PHPStrap\\Form\\File"){
 			$this->setAttributeDefaults(array('enctype' => 'multipart/form-data'));	
 		}
+    }
+    
+    private function formGroup($FormElement, $Label = '', $extraStyles = array()){
+    	$errorLabel = $this->errorLabel($FormElement);
+		$styles = array_merge(array('form-group'), $extraStyles);
+		if(!empty($errorLabel)){
+			$styles[] = "has-error";
+		}
+		$content = $errorLabel . $FormElement;
+		if($this->FormType === FormType::Horizontal){
+			$content = \PHPStrap\Util\Html::tag("div", $content, $this->horizontalStyles($FormElement, $Label));
+		}
+		return \PHPStrap\Util\Html::tag("div", $Label . $content, $styles);
     }
     
     private function errorLabel($FormElement){
@@ -198,8 +215,7 @@ class Form extends FormElement
 	    	}else{
 	    		$this->validForm = NULL;
 	    	}
-	    	
-    	}
+	    }
     	return $this->validForm;
     }
     

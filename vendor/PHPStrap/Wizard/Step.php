@@ -11,9 +11,9 @@ interface Step{
 	public function initialize($previousData);
 	
 	/**
-	 * @return boolean
+	 * @return boolean|NULL
 	 */
-	public function isValid();
+	public function canFinish();
 	
 	/**
 	 * @return array data
