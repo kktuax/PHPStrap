@@ -3,14 +3,18 @@ namespace PHPStrap;
 
 class Icon{
 	
-	private $Icon;
+	private $styles = array('glyphicon');
 	
-	public function __construct($Icon){
-		$this->Icon = $Icon;
+	public function __construct($iconName){
+		$this->styles[] = 'glyphicon-' . $iconName;
+	}
+	
+	public function addStyle($styleName){
+		$this->styles[] = $styleName;
 	}
 	
  	public function __toString(){
-        return Util\Html::tag("span", '', array('glyphicon', 'glyphicon-' . $this->Icon));
+        return Util\Html::tag("span", '', $this->styles);
     }
 	
     public static function button($Icon, $Content = '', $Href = "#", $styles = array(), $Attribs = array()){
