@@ -5,7 +5,7 @@ class Select extends FormElement implements Validable{
 	
 	private $Options;
 	private $SelectedOption;
-	
+	 	
     public function __construct($Options = array(), $SelectedOption = NULL, $Attribs = array(), $Validations = array()){
         $this->Attribs = $Attribs;
         $this->Validations = $Validations;
@@ -69,6 +69,7 @@ class Select extends FormElement implements Validable{
         }
 
         $code .= '</select>';
+    	$code .= $this->helpTextSpan();
         return $code;
     }
 	

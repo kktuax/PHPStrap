@@ -12,11 +12,7 @@ class GeneralInput extends FormElement{
         $this->Type = $Type;
     }
     
-    private $Type, $Help = NULL, $previousElements = array();
-    
-    public function withHelpText($Help){
-    	$this->Help = $Help;
-    }
+    private $Type, $previousElements = array();
     
 	public function withPreviousElement($previousElement){
     	$this->previousElements[] = $previousElement;
@@ -28,9 +24,7 @@ class GeneralInput extends FormElement{
     public function __toString(){
     	$code = implode($this->previousElements);
     	$code .= '<input type="' . $this->Type . '"' . $this->parseAttribs($this->Attribs) . ' />';
-    	if($this->Help != NULL){
-    		$code .= \PHPStrap\Util\Html::tag("span", $this->Help, array('help-block'));
-    	}
+    	$code .= $this->helpTextSpan();
     	return $code;
     }
     

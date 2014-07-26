@@ -1,10 +1,10 @@
 <?php
 namespace PHPStrap\Form;
 
-class FormElement implements Validable
-{
-    protected $Code = "", $Attribs = array(), $Validations = array();
-
+class FormElement implements Validable{
+    
+	protected $Code = "", $Attribs = array(), $Validations = array();
+    
 	/**
      * @return boolean
      */
@@ -115,6 +115,18 @@ class FormElement implements Validable
         }
 
         return $Str;
+    }
+    
+    private $Help = NULL;
+    
+    public function withHelpText($Help){
+    	$this->Help = $Help;
+    }
+    
+    protected function helpTextSpan(){
+    	return ($this->Help != NULL) ?
+    		\PHPStrap\Util\Html::tag("span", $this->Help, array('help-block')) : 
+    		"";
     }
     
 }
