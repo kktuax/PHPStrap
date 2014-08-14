@@ -14,9 +14,7 @@ class File extends GeneralInput implements Validable
     public function submitedValue(){
     	if($this->hasAttrib("name")){
     		if(isset($_FILES) AND isset($_FILES[$this->getAttrib("name")])){
-    			if($_FILES[$this->getAttrib("name")]['size'] > 0){
-    				return $_FILES[$this->getAttrib("name")];
-    			}
+    			return $_FILES[$this->getAttrib("name")];
         	}
     	}
     	return NULL;
