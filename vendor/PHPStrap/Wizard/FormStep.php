@@ -34,6 +34,8 @@ class FormStep implements Step{
 	public function canFinish(){
 		if(empty($_POST)){
 			return NULL;
+		}else if(empty($this->Form)){
+			return NULL;
 		}else if(empty($this->Form->submitedValues())){
 			return NULL;
 		}else{

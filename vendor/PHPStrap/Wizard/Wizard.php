@@ -56,6 +56,8 @@ class Wizard{
 			$Step->initialize($data);
 			if($Step->canFinish()){
 				$data = array_merge($data, $Step->finish());
+			}else{
+				break;
 			}
 		}
 	}
