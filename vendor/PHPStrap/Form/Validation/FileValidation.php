@@ -54,7 +54,7 @@ class FileValidation extends BaseValidation implements InputValidation{
      * @return boolean
      */
     public function isValid($inputValue){
-    	if($inputValue == NULL) return !$this->mandatory;
+    	if($this->isEmpty($inputValue)) return !$this->mandatory;
     	if($inputValue['error'] != UPLOAD_ERR_OK){
     		return FALSE;
     	}
@@ -83,6 +83,11 @@ class FileValidation extends BaseValidation implements InputValidation{
     		return $fun($inputValue['tmp_name']);
     	}
      	return TRUE;
+    }
+    
+	private function isEmpty($inputValue){
+    	if($inputValue == NULL) return TRUE;
+    	return $inputValue["size"] == 0;
     }
     
     private function formatBytes($bytes, $precision = 2) { 
