@@ -26,7 +26,7 @@ class Textarea extends FormElement implements Validable
      * @return string
      */
     public function __toString(){
-    	return '<textarea' . $this->parseAttribs($this->Attribs) . '>'.$this->Content.'</textarea>';
+    	return '<textarea' . $this->parseAttribs($this->Attribs) . '>'.$this->Content.'</textarea>' . $this->helpTextSpan();;
     }
     
 }
