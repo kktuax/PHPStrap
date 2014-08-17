@@ -52,8 +52,18 @@ class FormStep implements Step{
 		$this->next = \PHPStrap\Pager::nextPager($nextCaption, "javascript:$('#" . $this->id . "').submit();");
 	}
 	
+	public function withLeadText($text){
+		$this->leadText = $text;
+	}
+	
+	private $leadText = "";
+	
 	public function __toString(){
-		return $this->Form . $this->next;
+		$result = "";
+		if(!empty($this->leadText)){
+			$result .= \PHPStrap\Util\Html::tag("p", $this->leadText, array('lead'));
+		}
+		return $result . $this->Form . $this->next;
 	}
 			
 }
