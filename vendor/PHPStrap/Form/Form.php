@@ -175,12 +175,19 @@ class Form extends FormElement
     
     private $validForm = NULL;
     
-    public function submitedValues(){
+    public function submitedValues($namePrefix = NULL){
     	$values = array();
     	foreach($this->Elements as $el){
     		$val = $el->submitedValue();
     		if($val !== NULL){
-    			$values[$el->getAttrib("name")] = $val;
+    			$name = $el->getAttrib("name");
+    			if(empty($name)){
+    				continue;
+    			}
+    			if((!empty($namePrefix)) AND (!startsWith($name, $namePrefix))){
+    				continue;
+    			}
+    			$values[$name] = $val;
     		}
     	}
     	return $values;

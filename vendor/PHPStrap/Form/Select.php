@@ -18,13 +18,17 @@ class Select extends FormElement implements Validable{
 	 * @param String $name of the input form element
 	 * @param array $Options array (keys will act as data and values will be displayed) 
 	 * @param String $SelectedOption
+	 * @param array $validOptions allowed select keys (if absent, all will be valid options) 
 	 * @return unknown_type
 	 */
-	public static function withNameAndOptions($name, $Options, $SelectedOption = NULL){
+	public static function withNameAndOptions($name, $Options, $SelectedOption = NULL, $validOptions = NULL){
+		if(empty($validOptions)){
+			$validOptions = array_keys($Options);
+		}
 		return new Select(
 			$Options, $SelectedOption, 
 			array('name' => $name), 
-			array(new Validation\InListValidation("Required field", array_keys($Options)))
+			array(new Validation\InListValidation("Required field", $validOptions))
 		);
 	}
 	
@@ -32,13 +36,17 @@ class Select extends FormElement implements Validable{
 	 * @param String $name of the input form element
 	 * @param array $Options vector array (keys and values are the same) 
 	 * @param String $SelectedOption
+	 * @param array $validOptions allowed select keys (if absent, all will be valid options)
 	 * @return unknown_type
 	 */
-	public static function withNameAndSimpleOptions($name, $Options, $SelectedOption = NULL){
+	public static function withNameAndSimpleOptions($name, $Options, $SelectedOption = NULL, $validOptions = NULL){
+		if(empty($validOptions)){
+			$validOptions = $Options;
+		}
 		return new Select(
 			array_combine($Options, $Options), $SelectedOption, 
 			array('name' => $name), 
-			array(new Validation\InListValidation("Required field", $Options))
+			array(new Validation\InListValidation("Required field", $validOptions))
 		);
 	}
 	

@@ -20,6 +20,11 @@ class FormStep implements Step{
 		$builder = $this->formBuilderFunction;
 		$this->Form = $builder($previousData);
 		$this->Form->setId($this->id);
+		$previousDataKeyValues = array();
+		foreach($previousData as $name => $value){
+			$previousDataKeyValues[] = array("name" => $name, "value" => $value);
+		}
+		$this->Form->hidden($previousDataKeyValues);
 	}
 	
 	public function finish(){
