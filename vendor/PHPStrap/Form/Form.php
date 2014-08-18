@@ -266,11 +266,21 @@ class Form extends FormElement
     	if($validForm === TRUE){
     		return $messageCode;
     	}else{
-    		$code = '<form role="form" action="' . $this->Action . '" method="' . $this->Method . '"';
+    		$code = "";
+    		if(!empty($this->previous_contents)){
+    			$code .= implode($this->previous_contents);
+    		}
+    		$code .= '<form role="form" action="' . $this->Action . '" method="' . $this->Method . '"';
         	$code .= $this->parseAttribs($this->Attribs) . '>';
     		$code .= $messageCode . $this->Code . "</form>";
     		return $code;
     	}
     }
+    
+	private $previous_contents = array();
+	
+	public function addPreviousContent($Content){
+		$this->previous_contents[] = $Content;
+	}
     
 }
