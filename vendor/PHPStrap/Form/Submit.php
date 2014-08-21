@@ -14,9 +14,11 @@ class Submit extends FormElement
     	$this->Code .= '<button type="submit"' . $this->parseAttribs($this->Attribs) . '>' . $this->Text . '</button>';
     }
     
-    public function addHrefButton($Text, $Link){
+    public function addHrefButton($Text, $Link, $styles = array()){
     	$this->Code .= " " . \PHPStrap\Util\Html::tag("a",
-			$Text, array('btn', 'btn-default'), array("href" => $Link)
+			$Text, 
+    		array_merge(array('btn', 'btn-default'), $styles), 
+    		array("href" => $Link)
 		); 
     }
     
