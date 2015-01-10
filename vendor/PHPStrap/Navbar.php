@@ -7,9 +7,11 @@ class Navbar{
 	private $Form = '';
 	private $Items = array();
 	private $ItemsRight = array();
+	private $Styles = array();
 		
-	public function __construct($Brand, $Href = '#'){
+	public function __construct($Brand, $Href = '#', $Styles = array('navbar-default')){
     	$icon = Util\Html::tag("span", '', array('icon-bar'));
+    	$this->Styles = $Styles;
     	$this->Header = Util\Html::tag("div",
     		Util\Html::tag("button", 
     			$icon . $icon . $icon, 
@@ -99,7 +101,7 @@ class Navbar{
         		), 
         		array('container')
         	), 
-        	array('navbar', 'navbar-default', 'navbar-fixed-top')
+        	array_merge(array('navbar'), $this->Styles)
         );
     }
    
