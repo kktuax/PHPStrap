@@ -2,3 +2,5 @@
 .project
 .svn
 vendor/JasonKaz/FormBuild/RichTextarea.php
+.buildpath
+.settings
