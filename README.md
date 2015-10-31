@@ -10,10 +10,12 @@ Features
  * Nest components in object-oriented way 
  * Extend the bootstrap components with custom styles
  * Form validation
- * Wizard comonent with dependant Forms
+ * Wizard component with dependant Forms
 
 Quick start
 ------------------
+
+A full working example is available in the [repository](../master/examples/example.php).
 
 Add the [composer](https://getcomposer.org/) dependency:
 
@@ -23,7 +25,7 @@ Add the [composer](https://getcomposer.org/) dependency:
 }
 ```
 
-Issuea a composer install o composer update if you already have composer installed for your project.
+Issue a composer install o composer update if you already have composer installed for your project.
 
 Include de composer autoload directive:
 
@@ -63,11 +65,6 @@ composer install
 
 Deploy the examples folder to your PHP-enabled server, an open your browser:
 
-(http://localhost/PHPStrap/examples/example.php)
+[http://localhost/PHPStrap/examples/example.php](http://localhost/PHPStrap/examples/example.php)
 
 [![API DOCS](http://apigenerator.org/badge.png)](http://kktuax.github.io/PHPStrap/)
-
-
-
-
-
