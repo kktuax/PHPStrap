@@ -1,20 +1,20 @@
 Whats the purpose of this project?
 ------------------
 
-This project was created to allow PHP to create forms which applied to Twitter Bootstrap's standards without having to manually create the markup required for them.
+Using this you can create Bootstrap's HTML markup easily using PHP.
 
-
-Updates
+Features
 ------------------
 
-* 11/29/2013
- * Add File & Password types
- * Have general inputs be children of GeneralInput
- * Add support for hidden inputs
+ * Bootstrap 3 support
+ * Nest components in object-oriented way 
+ * Extend the bootstrap components with custom styles
+ * Form validation
+ * Wizard comonent with dependant Forms
 
-* 11/28/2013
- * Add Select, Textarea, and StaticText controls
- * Add support for control properties
+[![API DOCS](http://apigenerator.org/badge.png)](http://<user>.github.io/<repo>/)
 
-* 11/27/2013
- * Began full rewrite to support Bootstrap 3
+
+
+
+
