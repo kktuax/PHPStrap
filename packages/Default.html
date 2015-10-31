@@ -1,0 +1,468 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>kktuax/PHPStrap » Default</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">kktuax/PHPStrap</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPStrap.html"><i class="icon-th"></i> PHPStrap</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">635</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Packages</li>
+<li>
+<a href="../packages/Default.html" title="Default"><i class="icon-folder-open"></i>Default</a><ul class="nav nav-list nav-packages"></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-interface"></i> Interfaces</li>
+<li><a href="#Validable" title="">Validable</a></li>
+<li><a href="#InputValidation" title="">InputValidation</a></li>
+<li><a href="#Step" title="">Step</a></li>
+<li class="nav-header">
+<i class="icon-custom icon-class"></i> Classes</li>
+<li><a href="#Alert" title="">Alert</a></li>
+<li><a href="#Media" title="">Media</a></li>
+<li><a href="#Dropdown" title="">Dropdown</a></li>
+<li><a href="#Accordion" title="">Accordion</a></li>
+<li><a href="#FormElement" title="">FormElement</a></li>
+<li><a href="#File" title='Creates a general input using the following HTML:
+   &lt;input type="[input type]" /&gt;'>File</a></li>
+<li><a href="#StaticText" title="">StaticText</a></li>
+<li><a href="#GeneralInput" title='Creates a general input using the following HTML:
+   &lt;input type="[input type]" /&gt;'>GeneralInput</a></li>
+<li><a href="#Checkbox" title="">Checkbox</a></li>
+<li><a href="#Password" title='Creates a general input using the following HTML:
+   &lt;input type="[input type]" /&gt;'>Password</a></li>
+<li><a href="#Select" title="">Select</a></li>
+<li><a href="#FormType" title="">FormType</a></li>
+<li><a href="#Form" title="">Form</a></li>
+<li><a href="#Textarea" title="">Textarea</a></li>
+<li><a href="#BaseValidation" title="">BaseValidation</a></li>
+<li><a href="#InListValidation" title="">InListValidation</a></li>
+<li><a href="#FileValidation" title="">FileValidation</a></li>
+<li><a href="#EmailValidation" title="">EmailValidation</a></li>
+<li><a href="#LengthValidation" title="">LengthValidation</a></li>
+<li><a href="#RequiredValidation" title="">RequiredValidation</a></li>
+<li><a href="#LambdaValidation" title="">LambdaValidation</a></li>
+<li><a href="#NumericValidation" title="">NumericValidation</a></li>
+<li><a href="#Label" title="">Label</a></li>
+<li><a href="#Text" title='Creates a general input using the following HTML:
+   &lt;input type="[input type]" /&gt;'>Text</a></li>
+<li><a href="#Submit" title="">Submit</a></li>
+<li><a href="#Table" title="">Table</a></li>
+<li><a href="#Icon" title="">Icon</a></li>
+<li><a href="#ProgressBar" title="">ProgressBar</a></li>
+<li><a href="#Panel" title="">Panel</a></li>
+<li><a href="#Well" title="">Well</a></li>
+<li><a href="#Row" title="">Row</a></li>
+<li><a href="#Column" title="">Column</a></li>
+<li><a href="#ListGroup" title="">ListGroup</a></li>
+<li><a href="#TabGroup" title="">TabGroup</a></li>
+<li><a href="#Tab" title="">Tab</a></li>
+<li><a href="#Pager" title="">Pager</a></li>
+<li><a href="#Thumbnail" title="">Thumbnail</a></li>
+<li><a href="#Breadcrumb" title="">Breadcrumb</a></li>
+<li><a href="#Navbar" title="">Navbar</a></li>
+<li><a href="#Html" title="">Html</a></li>
+<li><a href="#FormStep" title="">FormStep</a></li>
+<li><a href="#Wizard" title="">Wizard</a></li>
+<li><a href="#PageHeader" title="">PageHeader</a></li>
+<li><a href="#AlertType" title="">AlertType</a></li>
+</ul>
+</div>
+<div class="span8 package-contents">
+<ul class="breadcrumb"><li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li class="active"><a href="../packages/Default.html">Default</a></li>
+</li></ul>
+<div class="package-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="Validable" class="element ajax clickable interface">
+<h1>Validable<a href="../classes/PHPStrap.Form.Validable.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Validable.html" class="more">« More »</a>
+</div>
+<div id="InputValidation" class="element ajax clickable interface">
+<h1>InputValidation<a href="../classes/PHPStrap.Form.Validation.InputValidation.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Validation.InputValidation.html" class="more">« More »</a>
+</div>
+<div id="Step" class="element ajax clickable interface">
+<h1>Step<a href="../classes/PHPStrap.Wizard.Step.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Wizard.Step.html" class="more">« More »</a>
+</div>
+<div id="Accordion" class="element ajax clickable class">
+<h1>Accordion<a href="../classes/PHPStrap.Accordion.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Accordion.html" class="more">« More »</a>
+</div>
+<div id="Alert" class="element ajax clickable class">
+<h1>Alert<a href="../classes/PHPStrap.Alert.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Alert.html" class="more">« More »</a>
+</div>
+<div id="AlertType" class="element ajax clickable class">
+<h1>AlertType<a href="../classes/PHPStrap.AlertType.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.AlertType.html" class="more">« More »</a>
+</div>
+<div id="Breadcrumb" class="element ajax clickable class">
+<h1>Breadcrumb<a href="../classes/PHPStrap.Breadcrumb.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Breadcrumb.html" class="more">« More »</a>
+</div>
+<div id="Column" class="element ajax clickable class">
+<h1>Column<a href="../classes/PHPStrap.Column.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Column.html" class="more">« More »</a>
+</div>
+<div id="Dropdown" class="element ajax clickable class">
+<h1>Dropdown<a href="../classes/PHPStrap.Dropdown.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Dropdown.html" class="more">« More »</a>
+</div>
+<div id="Checkbox" class="element ajax clickable class">
+<h1>Checkbox<a href="../classes/PHPStrap.Form.Checkbox.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Checkbox.html" class="more">« More »</a>
+</div>
+<div id="File" class="element ajax clickable class">
+<h1>File<a href="../classes/PHPStrap.Form.File.html">¶</a>
+</h1>
+<p class="short_description">Creates a general input using the following HTML:
+   <input type="[input type]" /></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.File.html" class="more">« More »</a>
+</div>
+<div id="Form" class="element ajax clickable class">
+<h1>Form<a href="../classes/PHPStrap.Form.Form.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Form.html" class="more">« More »</a>
+</div>
+<div id="FormElement" class="element ajax clickable class">
+<h1>FormElement<a href="../classes/PHPStrap.Form.FormElement.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.FormElement.html" class="more">« More »</a>
+</div>
+<div id="FormType" class="element ajax clickable class">
+<h1>FormType<a href="../classes/PHPStrap.Form.FormType.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.FormType.html" class="more">« More »</a>
+</div>
+<div id="GeneralInput" class="element ajax clickable class">
+<h1>GeneralInput<a href="../classes/PHPStrap.Form.GeneralInput.html">¶</a>
+</h1>
+<p class="short_description">Creates a general input using the following HTML:
+   <input type="[input type]" /></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.GeneralInput.html" class="more">« More »</a>
+</div>
+<div id="Label" class="element ajax clickable class">
+<h1>Label<a href="../classes/PHPStrap.Form.Label.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Label.html" class="more">« More »</a>
+</div>
+<div id="Password" class="element ajax clickable class">
+<h1>Password<a href="../classes/PHPStrap.Form.Password.html">¶</a>
+</h1>
+<p class="short_description">Creates a general input using the following HTML:
+   <input type="[input type]" /></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Password.html" class="more">« More »</a>
+</div>
+<div id="Select" class="element ajax clickable class">
+<h1>Select<a href="../classes/PHPStrap.Form.Select.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Select.html" class="more">« More »</a>
+</div>
+<div id="StaticText" class="element ajax clickable class">
+<h1>StaticText<a href="../classes/PHPStrap.Form.StaticText.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.StaticText.html" class="more">« More »</a>
+</div>
+<div id="Submit" class="element ajax clickable class">
+<h1>Submit<a href="../classes/PHPStrap.Form.Submit.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Submit.html" class="more">« More »</a>
+</div>
+<div id="Text" class="element ajax clickable class">
+<h1>Text<a href="../classes/PHPStrap.Form.Text.html">¶</a>
+</h1>
+<p class="short_description">Creates a general input using the following HTML:
+   <input type="[input type]" /></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Text.html" class="more">« More »</a>
+</div>
+<div id="Textarea" class="element ajax clickable class">
+<h1>Textarea<a href="../classes/PHPStrap.Form.Textarea.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Textarea.html" class="more">« More »</a>
+</div>
+<div id="BaseValidation" class="element ajax clickable class">
+<h1>BaseValidation<a href="../classes/PHPStrap.Form.Validation.BaseValidation.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Validation.BaseValidation.html" class="more">« More »</a>
+</div>
+<div id="EmailValidation" class="element ajax clickable class">
+<h1>EmailValidation<a href="../classes/PHPStrap.Form.Validation.EmailValidation.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Validation.EmailValidation.html" class="more">« More »</a>
+</div>
+<div id="FileValidation" class="element ajax clickable class">
+<h1>FileValidation<a href="../classes/PHPStrap.Form.Validation.FileValidation.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Validation.FileValidation.html" class="more">« More »</a>
+</div>
+<div id="InListValidation" class="element ajax clickable class">
+<h1>InListValidation<a href="../classes/PHPStrap.Form.Validation.InListValidation.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Validation.InListValidation.html" class="more">« More »</a>
+</div>
+<div id="LambdaValidation" class="element ajax clickable class">
+<h1>LambdaValidation<a href="../classes/PHPStrap.Form.Validation.LambdaValidation.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Validation.LambdaValidation.html" class="more">« More »</a>
+</div>
+<div id="LengthValidation" class="element ajax clickable class">
+<h1>LengthValidation<a href="../classes/PHPStrap.Form.Validation.LengthValidation.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Validation.LengthValidation.html" class="more">« More »</a>
+</div>
+<div id="NumericValidation" class="element ajax clickable class">
+<h1>NumericValidation<a href="../classes/PHPStrap.Form.Validation.NumericValidation.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Validation.NumericValidation.html" class="more">« More »</a>
+</div>
+<div id="RequiredValidation" class="element ajax clickable class">
+<h1>RequiredValidation<a href="../classes/PHPStrap.Form.Validation.RequiredValidation.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Form.Validation.RequiredValidation.html" class="more">« More »</a>
+</div>
+<div id="Icon" class="element ajax clickable class">
+<h1>Icon<a href="../classes/PHPStrap.Icon.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Icon.html" class="more">« More »</a>
+</div>
+<div id="ListGroup" class="element ajax clickable class">
+<h1>ListGroup<a href="../classes/PHPStrap.ListGroup.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.ListGroup.html" class="more">« More »</a>
+</div>
+<div id="Media" class="element ajax clickable class">
+<h1>Media<a href="../classes/PHPStrap.Media.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Media.html" class="more">« More »</a>
+</div>
+<div id="Navbar" class="element ajax clickable class">
+<h1>Navbar<a href="../classes/PHPStrap.Navbar.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Navbar.html" class="more">« More »</a>
+</div>
+<div id="PageHeader" class="element ajax clickable class">
+<h1>PageHeader<a href="../classes/PHPStrap.PageHeader.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.PageHeader.html" class="more">« More »</a>
+</div>
+<div id="Pager" class="element ajax clickable class">
+<h1>Pager<a href="../classes/PHPStrap.Pager.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Pager.html" class="more">« More »</a>
+</div>
+<div id="Panel" class="element ajax clickable class">
+<h1>Panel<a href="../classes/PHPStrap.Panel.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Panel.html" class="more">« More »</a>
+</div>
+<div id="ProgressBar" class="element ajax clickable class">
+<h1>ProgressBar<a href="../classes/PHPStrap.ProgressBar.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.ProgressBar.html" class="more">« More »</a>
+</div>
+<div id="Row" class="element ajax clickable class">
+<h1>Row<a href="../classes/PHPStrap.Row.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Row.html" class="more">« More »</a>
+</div>
+<div id="Tab" class="element ajax clickable class">
+<h1>Tab<a href="../classes/PHPStrap.Tab.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Tab.html" class="more">« More »</a>
+</div>
+<div id="TabGroup" class="element ajax clickable class">
+<h1>TabGroup<a href="../classes/PHPStrap.TabGroup.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.TabGroup.html" class="more">« More »</a>
+</div>
+<div id="Table" class="element ajax clickable class">
+<h1>Table<a href="../classes/PHPStrap.Table.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Table.html" class="more">« More »</a>
+</div>
+<div id="Thumbnail" class="element ajax clickable class">
+<h1>Thumbnail<a href="../classes/PHPStrap.Thumbnail.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Thumbnail.html" class="more">« More »</a>
+</div>
+<div id="Html" class="element ajax clickable class">
+<h1>Html<a href="../classes/PHPStrap.Util.Html.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Util.Html.html" class="more">« More »</a>
+</div>
+<div id="Well" class="element ajax clickable class">
+<h1>Well<a href="../classes/PHPStrap.Well.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Well.html" class="more">« More »</a>
+</div>
+<div id="FormStep" class="element ajax clickable class">
+<h1>FormStep<a href="../classes/PHPStrap.Wizard.FormStep.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Wizard.FormStep.html" class="more">« More »</a>
+</div>
+<div id="Wizard" class="element ajax clickable class">
+<h1>Wizard<a href="../classes/PHPStrap.Wizard.Wizard.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PHPStrap.Wizard.Wizard.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
+</a> and<br>
+            generated on 2015-10-31T11:45:28+01:00.<br></footer></div>
+</div>
+</body>
+</html>

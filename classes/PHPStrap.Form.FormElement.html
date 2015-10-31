@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>kktuax/PHPStrap » \PHPStrap\Form\FormElement</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">kktuax/PHPStrap</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPStrap.html"><i class="icon-th"></i> PHPStrap</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">635</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___toString" title="__toString() :: "><span class="description">__toString()
+        </span><pre>__toString()</pre></a></li>
+<li class="method public "><a href="#method_errorMessage" title="errorMessage() :: "><span class="description">errorMessage()
+        </span><pre>errorMessage()</pre></a></li>
+<li class="method public "><a href="#method_getAttrib" title="getAttrib() :: "><span class="description">getAttrib()
+        </span><pre>getAttrib()</pre></a></li>
+<li class="method public "><a href="#method_hasAttrib" title="hasAttrib() :: "><span class="description">hasAttrib()
+        </span><pre>hasAttrib()</pre></a></li>
+<li class="method public "><a href="#method_isValid" title="isValid() :: "><span class="description">isValid()
+        </span><pre>isValid()</pre></a></li>
+<li class="method public "><a href="#method_submitedValue" title="submitedValue() :: "><span class="description">submitedValue()
+        </span><pre>submitedValue()</pre></a></li>
+<li class="method public "><a href="#method_withHelpText" title="withHelpText() :: "><span class="description">withHelpText()
+        </span><pre>withHelpText()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method_addAttrib" title="addAttrib() :: "><span class="description">addAttrib()
+        </span><pre>addAttrib()</pre></a></li>
+<li class="method protected "><a href="#method_helpTextSpan" title="helpTextSpan() :: "><span class="description">helpTextSpan()
+        </span><pre>helpTextSpan()</pre></a></li>
+<li class="method protected "><a href="#method_parseAttribs" title="parseAttribs() :: "><span class="description">parseAttribs()
+        </span><pre>parseAttribs()</pre></a></li>
+<li class="method protected "><a href="#method_setAttrib" title="setAttrib() :: "><span class="description">setAttrib()
+        </span><pre>setAttrib()</pre></a></li>
+<li class="method protected "><a href="#method_setAttributeDefaults" title="setAttributeDefaults() :: "><span class="description">setAttributeDefaults()
+        </span><pre>setAttributeDefaults()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property_Attribs" title="$Attribs() :: "><span class="description"></span><pre>$Attribs</pre></a></li>
+<li class="property protected "><a href="#property_Code" title="$Code() :: "><span class="description"></span><pre>$Code</pre></a></li>
+<li class="property protected "><a href="#property_Validations" title="$Validations() :: "><span class="description"></span><pre>$Validations</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="property private "><a href="#property_Help" title="$Help() :: "><span class="description"></span><pre>$Help</pre></a></li></ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\PHPStrap\Form\FormElement"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/PHPStrap.html">PHPStrap</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/PHPStrap.Form.html">Form</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/PHPStrap.Form.FormElement.html">FormElement</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description"></p>
+<div class="details">
+<div class="long_description"></div>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___toString"></a><div class="element clickable method public method___toString" data-toggle="collapse" data-target=".method___toString .collapse">
+<h2>__toString()
+        </h2>
+<pre>__toString() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_errorMessage"></a><div class="element clickable method public method_errorMessage" data-toggle="collapse" data-target=".method_errorMessage .collapse">
+<h2>errorMessage()
+        </h2>
+<pre>errorMessage() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>with error message (NULL if no error present)</div>
+</div></div>
+</div>
+<a id="method_getAttrib"></a><div class="element clickable method public method_getAttrib" data-toggle="collapse" data-target=".method_getAttrib .collapse">
+<h2>getAttrib()
+        </h2>
+<pre>getAttrib(mixed $Attrib) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$Attrib</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method_hasAttrib"></a><div class="element clickable method public method_hasAttrib" data-toggle="collapse" data-target=".method_hasAttrib .collapse">
+<h2>hasAttrib()
+        </h2>
+<pre>hasAttrib(mixed $Attrib) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$Attrib</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method_isValid"></a><div class="element clickable method public method_isValid" data-toggle="collapse" data-target=".method_isValid .collapse">
+<h2>isValid()
+        </h2>
+<pre>isValid() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a id="method_submitedValue"></a><div class="element clickable method public method_submitedValue" data-toggle="collapse" data-target=".method_submitedValue .collapse">
+<h2>submitedValue()
+        </h2>
+<pre>submitedValue() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_withHelpText"></a><div class="element clickable method public method_withHelpText" data-toggle="collapse" data-target=".method_withHelpText .collapse">
+<h2>withHelpText()
+        </h2>
+<pre>withHelpText($Help) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$Help</h4></div>
+</div></div>
+</div>
+<a id="method_addAttrib"></a><div class="element clickable method protected method_addAttrib" data-toggle="collapse" data-target=".method_addAttrib .collapse">
+<h2>addAttrib()
+        </h2>
+<pre>addAttrib(mixed $Attrib, mixed $Value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$Attrib</h4></div>
+<div class="subelement argument"><h4>$Value</h4></div>
+</div></div>
+</div>
+<a id="method_helpTextSpan"></a><div class="element clickable method protected method_helpTextSpan" data-toggle="collapse" data-target=".method_helpTextSpan .collapse">
+<h2>helpTextSpan()
+        </h2>
+<pre>helpTextSpan() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_parseAttribs"></a><div class="element clickable method protected method_parseAttribs" data-toggle="collapse" data-target=".method_parseAttribs .collapse">
+<h2>parseAttribs()
+        </h2>
+<pre>parseAttribs($Attribs) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$Attribs</h4></div>
+</div></div>
+</div>
+<a id="method_setAttrib"></a><div class="element clickable method protected method_setAttrib" data-toggle="collapse" data-target=".method_setAttrib .collapse">
+<h2>setAttrib()
+        </h2>
+<pre>setAttrib(mixed $Attrib, mixed $Value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$Attrib</h4></div>
+<div class="subelement argument"><h4>$Value</h4></div>
+</div></div>
+</div>
+<a id="method_setAttributeDefaults"></a><div class="element clickable method protected method_setAttributeDefaults" data-toggle="collapse" data-target=".method_setAttributeDefaults .collapse">
+<h2>setAttributeDefaults()
+        </h2>
+<pre>setAttributeDefaults(mixed $DefaultAttribs) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$DefaultAttribs</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_Attribs"> </a><div class="element clickable property protected property_Attribs" data-toggle="collapse" data-target=".property_Attribs .collapse">
+<h2>$Attribs</h2>
+<pre>$Attribs </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_Code"> </a><div class="element clickable property protected property_Code" data-toggle="collapse" data-target=".property_Code .collapse">
+<h2>$Code</h2>
+<pre>$Code </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_Validations"> </a><div class="element clickable property protected property_Validations" data-toggle="collapse" data-target=".property_Validations .collapse">
+<h2>$Validations</h2>
+<pre>$Validations </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_Help"> </a><div class="element clickable property private property_Help" data-toggle="collapse" data-target=".property_Help .collapse">
+<h2>$Help</h2>
+<pre>$Help </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
+</a> and<br>
+            generated on 2015-10-31T11:45:28+01:00.<br></footer></div>
+</div>
+</body>
+</html>
