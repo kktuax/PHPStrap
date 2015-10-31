@@ -1,0 +1,18 @@
+{
+    "name": "phpstrap/demo",
+    "description": "PHPStrap demo",
+    "keywords": ["PHPStrap","demo","bootstrap"],
+    "homepage": "http://maxtuni.es",
+    "authors": [
+    	{
+			"name"		: "Max Tuni",
+			"email"		: "maxilandia@gmail.com",
+			"homepage"	: "http://maxtuni.es",
+			"role"		: "Developer"
+		}
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "phpstrap/phpstrap": "1.*"
+    }
+}

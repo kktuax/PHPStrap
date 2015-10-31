@@ -3,3 +3,6 @@
 .svn
 .buildpath
 .settings
+output
+composer.lock
+vendor
