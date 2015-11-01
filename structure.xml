@@ -3395,7 +3395,7 @@
     </parse_markers>
     <source>eJx1T81qAjEQPpunGMTD7l7sWVstPRR7kxZ6EmTMjjaQTGImgULx3Rt3t2oLncMMzHx/c78MH0EpRkcSUBOsV+u3FDFsnn10m3e0psVkPM+V0hZF4JWO2URqryegz0TcCjyh0M3auGDJESeBFw45XU9fCkqpUcg7azTsM+uOsd1qz5Ji1qmaUIwlAonggeABxj/GsDdk23HdafRK5woYi9Vs9q9GPe+wp9773KZN09MbeCx0dFB4hg8wMUPeTBdApJQjw857S8jDetrNv28Y6V6tbmTqPuhoUCk+lrgqbu4XqoYF3F1yqpNaLr4BfYeGTg==</source>
   </file>
-  <file path="src/PHPStrap/Form/Form.php" generated-path="src.PHPStrap.Form.Form.html" hash="33b90f4009f6135b1ca8efa49f64b038" package="Default">
+  <file path="src/PHPStrap/Form/Form.php" generated-path="src.PHPStrap.Form.Form.html" hash="51473635127ad1caa6ffc0bbc8400845" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
@@ -3524,10 +3524,10 @@
           <long-description></long-description>
         </docblock>
       </property>
-      <property static="false" visibility="private" line="280" namespace="PHPStrap\Form" package="Default">
+      <property static="false" visibility="private" line="284" namespace="PHPStrap\Form" package="Default">
         <name>$previous_contents</name>
         <default>array()</default>
-        <docblock line="280">
+        <docblock line="284">
           <description></description>
           <long-description></long-description>
         </docblock>
@@ -3858,49 +3858,67 @@ Can accept a single array to create one input or a multidimensional array to cre
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPStrap\Form" line="199" package="Default">
-        <name>isValid</name>
-        <full_name>\PHPStrap\Form\Form::isValid()</full_name>
-        <docblock line="199">
+      <method final="false" abstract="false" static="true" visibility="private" namespace="PHPStrap\Form" line="196" package="Default">
+        <name>startsWith</name>
+        <full_name>\PHPStrap\Form\Form::startsWith()</full_name>
+        <docblock line="196">
           <description></description>
           <long-description></long-description>
-          <tag name="return" line="199" description="" type="boolean|NULL">
+        </docblock>
+        <argument line="0">
+          <name>$haystack</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0">
+          <name>$needle</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPStrap\Form" line="203" package="Default">
+        <name>isValid</name>
+        <full_name>\PHPStrap\Form\Form::isValid()</full_name>
+        <docblock line="203">
+          <description></description>
+          <long-description></long-description>
+          <tag name="return" line="203" description="" type="boolean|NULL">
             <type>boolean</type>
             <type>NULL</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="PHPStrap\Form" line="229" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="PHPStrap\Form" line="233" package="Default">
         <name>fieldErrors</name>
         <full_name>\PHPStrap\Form\Form::fieldErrors()</full_name>
-        <docblock line="229">
+        <docblock line="233">
           <description></description>
           <long-description></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="PHPStrap\Form" line="239" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="PHPStrap\Form" line="243" package="Default">
         <name>globalErrors</name>
         <full_name>\PHPStrap\Form\Form::globalErrors()</full_name>
-        <docblock line="239">
+        <docblock line="243">
           <description></description>
           <long-description></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPStrap\Form" line="252" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPStrap\Form" line="256" package="Default">
         <name>__toString</name>
         <full_name>\PHPStrap\Form\Form::__toString()</full_name>
-        <docblock line="252">
+        <docblock line="256">
           <description></description>
           <long-description></long-description>
-          <tag name="return" line="252" description="" type="string">
+          <tag name="return" line="256" description="" type="string">
             <type>string</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPStrap\Form" line="282" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPStrap\Form" line="286" package="Default">
         <name>addPreviousContent</name>
         <full_name>\PHPStrap\Form\Form::addPreviousContent()</full_name>
-        <docblock line="282">
+        <docblock line="286">
           <description></description>
           <long-description></long-description>
         </docblock>
@@ -3925,7 +3943,7 @@ Can accept a single array to create one input or a multidimensional array to cre
       <error line="20" code="PPC:ERR-50007">No summary for property $Action</error>
       <error line="20" code="PPC:ERR-50007">No summary for property $Method</error>
       <error line="176" code="PPC:ERR-50007">No summary for property $validForm</error>
-      <error line="280" code="PPC:ERR-50007">No summary for property $previous_contents</error>
+      <error line="284" code="PPC:ERR-50007">No summary for property $previous_contents</error>
       <error line="29" code="PPC:ERR-50015">Argument $ErrorMessage is missing from the Docblock of __construct()</error>
       <error line="29" code="PPC:ERR-50015">Argument $SucessMessage is missing from the Docblock of __construct()</error>
       <error line="29" code="PPC:ERR-50008">No summary for method __construct()</error>
@@ -3970,14 +3988,17 @@ Can accept a single array to create one input or a multidimensional array to cre
       <error line="151" code="PPC:ERR-50008">No summary for method label()</error>
       <error line="178" code="PPC:ERR-50015">Argument $namePrefix is missing from the Docblock of submitedValues()</error>
       <error line="178" code="PPC:ERR-50008">No summary for method submitedValues()</error>
-      <error line="199" code="PPC:ERR-50008">No summary for method isValid()</error>
-      <error line="229" code="PPC:ERR-50008">No summary for method fieldErrors()</error>
-      <error line="239" code="PPC:ERR-50008">No summary for method globalErrors()</error>
-      <error line="252" code="PPC:ERR-50008">No summary for method __toString()</error>
-      <error line="282" code="PPC:ERR-50015">Argument $Content is missing from the Docblock of addPreviousContent()</error>
-      <error line="282" code="PPC:ERR-50008">No summary for method addPreviousContent()</error>
+      <error line="196" code="PPC:ERR-50015">Argument $haystack is missing from the Docblock of startsWith()</error>
+      <error line="196" code="PPC:ERR-50015">Argument $needle is missing from the Docblock of startsWith()</error>
+      <error line="196" code="PPC:ERR-50008">No summary for method startsWith()</error>
+      <error line="203" code="PPC:ERR-50008">No summary for method isValid()</error>
+      <error line="233" code="PPC:ERR-50008">No summary for method fieldErrors()</error>
+      <error line="243" code="PPC:ERR-50008">No summary for method globalErrors()</error>
+      <error line="256" code="PPC:ERR-50008">No summary for method __toString()</error>
+      <error line="286" code="PPC:ERR-50015">Argument $Content is missing from the Docblock of addPreviousContent()</error>
+      <error line="286" code="PPC:ERR-50008">No summary for method addPreviousContent()</error>
     </parse_markers>
-    <source>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</source>
+    <source>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</source>
   </file>
   <file path="src/PHPStrap/Table.php" generated-path="src.PHPStrap.Table.html" hash="d513d82d7820b46821f5afbb7bb730b4" package="Default">
     <docblock line="0">
