@@ -184,13 +184,17 @@ class Form extends FormElement
     			if(empty($name)){
     				continue;
     			}
-    			if((!empty($namePrefix)) AND (!startsWith($name, $namePrefix))){
+    			if((!empty($namePrefix)) AND (!self::startsWith($name, $namePrefix))){
     				continue;
     			}
     			$values[$name] = $val;
     		}
     	}
     	return $values;
+    }
+    
+    private static function startsWith($haystack, $needle){
+    	return $needle === "" || strpos($haystack, $needle) === 0;
     }
     
     /**
