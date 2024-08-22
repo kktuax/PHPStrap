@@ -28,7 +28,7 @@ class Pager{
 		); 
 	}
 	
-	private static function styles($Styles = array(), $Disabled){
+	private static function styles($Styles = array(), $Disabled = FALSE){
 		$styles = $Styles;
 		if($Disabled){
 			$styles[] = 'disabled';

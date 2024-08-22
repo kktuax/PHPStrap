@@ -36,7 +36,7 @@ class FileValidation extends BaseValidation implements InputValidation{
 	 * @param array $maxFileSize in bytes, f.e.: 30000 
 	 * @return void
 	 */
-    public function checkForSize($invalidSizeErrormessage = "Max file size: {0}", $maxFileSize){
+    public function checkForSize($invalidSizeErrormessage = "Max file size: {0}", $maxFileSize = 30000){
     	$this->maxFileSize = $maxFileSize;
     	$this->invalidSizeErrormessage = $invalidSizeErrormessage;
     }

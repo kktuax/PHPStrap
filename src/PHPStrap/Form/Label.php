@@ -12,7 +12,7 @@ class Label extends FormElement
      * @param        $FormType
      * @param        $LabelWidth
      */
-    public function __construct($Text, $Attribs = array(), $ScreenReaderOnly = false, $FormType, $LabelWidth)
+    public function __construct($Text = '', $Attribs = [], $ScreenReaderOnly = false, $FormType = FormType::Normal, $LabelWidth = 2)
     {
         $this->Attribs          = $Attribs;
         $this->Text             = $Text;
