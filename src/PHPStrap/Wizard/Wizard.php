@@ -4,6 +4,7 @@ namespace PHPStrap\Wizard;
 
 class Wizard{
 	
+	private $steps;
 	private $nextCaption;
 	
 	public function __construct($steps, $nextCaption = "Next"){
