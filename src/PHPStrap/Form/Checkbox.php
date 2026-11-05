@@ -19,7 +19,7 @@ class Checkbox extends FormElement
         $checked = $defaultChecked;
         if($this->hasAttrib("name") && $this->hasAttrib("value")){
         	if(!empty($_POST)){
-        		$checked = strcmp($this->submitedValue(), $this->getAttrib("value")) === 0;
+        		$checked = ($this->submitedValue() ?? '') === ($this->getAttrib("value") ?? '');
         	}
         }
         if($checked === TRUE){
